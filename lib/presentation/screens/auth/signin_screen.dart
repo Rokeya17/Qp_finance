@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 88),
+                Positioned(top: 88, child: const SizedBox(height: 88)),
                 Image.asset(
                   ImageAssets.applogoPNG,
                   width: 116,
@@ -49,7 +49,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: Colors.black54,
-                          fontFamily: 'SF Pro Text',
+                          // fontFamily: 'SF Pro Text',
                           height: 23.87 / 20,
                         ),
                       ),
@@ -68,52 +68,61 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                 ),
+                Gap(20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18),
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
-                      TextFormField(
-                        controller: _emailEditingController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 20),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
+                      Positioned(
+                        height: 59,
+                        width: 357,
+                        top: 386,
+                        left: 18,
+                        child: TextFormField(
+                          controller: _emailEditingController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                  color: Colors.blue, width: 2),
                             ),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                            labelText: 'Email',
                           ),
-                          labelText: 'Email',
+                          style: const TextStyle(height: 1.5),
+                          textAlignVertical: TextAlignVertical.center,
+                          minLines: 1,
+                          maxLines: 1,
                         ),
-                        style: const TextStyle(height: 1.5),
-                        textAlignVertical: TextAlignVertical.center,
-                        minLines: 1,
-                        maxLines: 1,
                       ),
                       const SizedBox(height: 16),
-                      TextFormField(
-                        controller: _passwordEditingController,
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 20),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
+                      Positioned(
+                        height: 59,
+                        width: 357,
+                        top: 386,
+                        left: 18,
+                        child: TextFormField(
+                          controller: _passwordEditingController,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                  color: Colors.blue, width: 2),
                             ),
-                            borderSide:
-                                BorderSide(color: Colors.blue, width: 2),
+                            labelText: 'Password',
                           ),
-                          labelText: 'Password',
+                          style: const TextStyle(height: 1.5),
+                          textAlignVertical: TextAlignVertical.center,
+                          minLines: 1,
+                          maxLines: 1,
                         ),
-                        style: const TextStyle(height: 1.5),
-                        textAlignVertical: TextAlignVertical.center,
-                        minLines: 1,
-                        maxLines: 1,
                       ),
                       const SizedBox(height: 16),
                       Align(
@@ -132,8 +141,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: 357,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                          ),
+                              backgroundColor: primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              )),
                           onPressed: () {
                             Get.to(const EmailVerificationScreen());
                           },
