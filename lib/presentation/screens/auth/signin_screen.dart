@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/auth/signup_screen.dart';
+import 'package:qp_finance/presentation/screens/widgets/button_widget.dart';
 import 'package:qp_finance/presentation/utility/color.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
@@ -29,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Positioned(top: 88, child: const SizedBox(height: 88)),
+                const Positioned(top: 88, child: SizedBox(height: 88)),
                 Image.asset(
                   ImageAssets.applogoPNG,
                   width: 116,
@@ -49,7 +50,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: Colors.black54,
-                          // fontFamily: 'SF Pro Text',
+                          fontFamily: 'SF Pro Text',
                           height: 23.87 / 20,
                         ),
                       ),
@@ -65,10 +66,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       color: primaryColor,
+                      fontFamily: 'SF Pro Display',
                     ),
                   ),
                 ),
-                Gap(20),
+                const Gap(20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18),
                   child: Column(
@@ -88,7 +90,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.blue, width: 2),
+                                  color: focusedBorderColor, width: 2),
                             ),
                             labelText: 'Email',
                           ),
@@ -114,7 +116,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                  color: Colors.blue, width: 2),
+                                  color: focusedBorderColor, width: 2),
                             ),
                             labelText: 'Password',
                           ),
@@ -136,28 +138,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       const Gap(10),
-                      SizedBox(
-                        height: 59,
-                        width: 357,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: primaryColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              )),
-                          onPressed: () {
-                            Get.to(const EmailVerificationScreen());
-                          },
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
+                      ButtonWidget(buttonText: 'SignIn', onPressed: () {}),
                       const SizedBox(
                         height: 10,
                       ),
@@ -169,9 +150,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Get.to(
-                          const SignupScreen(),
-                        );
+                        Get.offAll(const SignUpScreen());
                       },
                       child: const Text(
                         'Create New Account',
@@ -182,6 +161,38 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Elevatedbutton extends StatelessWidget {
+  const Elevatedbutton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 59,
+      width: 357,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            )),
+        onPressed: () {
+          Get.to(const EmailVerificationScreen());
+        },
+        child: const Text(
+          'Sign In',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
