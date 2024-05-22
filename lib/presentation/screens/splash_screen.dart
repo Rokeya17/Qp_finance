@@ -42,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
           const Gap(10),
           const SpinKitThreeBounce(
             color: Colors.blue,
-            size: 10,
+            size: 15,
           ),
           const Spacer(),
         ],
