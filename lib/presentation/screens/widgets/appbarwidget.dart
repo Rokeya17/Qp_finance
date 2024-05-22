@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Appwidget extends StatelessWidget implements PreferredSizeWidget {
+class Appbarwidget extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback onPressed;
 
-  const Appwidget({
+  const Appbarwidget({
     super.key,
     required this.title,
     required this.onPressed,

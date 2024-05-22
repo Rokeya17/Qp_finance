@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qp_finance/presentation/screens/widgets/appbarwidget.dart';
+import 'package:qp_finance/presentation/utility/button_widget.dart';
 
 class BirthdayScreen extends StatelessWidget {
   const BirthdayScreen({super.key});
@@ -7,7 +9,10 @@ class BirthdayScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [],
+        children: [
+          Appbarwidget(title: 'Birthday', onPressed: () {}),
+          ButtonWidget(buttonText: 'Next', onPressed: () {}),
+        ],
       ),
     );
   }

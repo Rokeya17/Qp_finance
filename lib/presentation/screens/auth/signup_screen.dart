@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/signin_screen.dart';
 import 'package:qp_finance/presentation/screens/create_account.dart';
 import 'package:qp_finance/presentation/screens/widgets/appbarwidget.dart';
 
@@ -19,10 +20,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Appwidget(
+      appBar: Appbarwidget(
           title: 'Create account',
           onPressed: () {
-            Get.back();
+            Get.to(const SignInScreen());
           }),
       body: Center(
         child: SingleChildScrollView(
