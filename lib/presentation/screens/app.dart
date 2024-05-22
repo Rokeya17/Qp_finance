@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/splash_screen.dart';
 
 class QPFinance extends StatelessWidget {
@@ -6,7 +7,7 @@ class QPFinance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       home: SplashScreen(),
     );
   }

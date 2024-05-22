@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:qp_finance/presentation/screens/home_screen.dart';
+import 'package:qp_finance/presentation/screens/auth/login_screen.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> goToNextScreen() async {
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAll(const HomeScreen());
+      Get.offAll(const LoginScreen());
     });
   }
 
@@ -32,17 +32,19 @@ class _SplashScreenState extends State<SplashScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(),
-          Spacer(),
-          SvgPicture.asset(
-            ImageAssets.applogoSVG,
-            width: 100,
+          const Row(),
+          const Spacer(),
+          Image.asset(
+            ImageAssets.applogoPNG,
+            width: 57,
+            height: 52,
           ),
-          SpinKitThreeBounce(
-            color: Colors.grey,
+          const Gap(10),
+          const SpinKitThreeBounce(
+            color: Colors.blue,
             size: 10,
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );
