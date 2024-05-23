@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -11,54 +10,39 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(
+      body: Center(
+        child: Container(
+          height: 94,
+          width: 370,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: Colors.grey,
+              width: 1,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Menu',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontFamily: 'SF Pro Display',
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.search),
-                ),
+                SvgPicture.asset(ImageAssets.rewardlogoSVG),
               ],
             ),
-            Gap(19),
-            SizedBox(
-                height: 63,
-                width: 331,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Column(
-                    children: [
-                      ListTile(
-                        leading: SizedBox(
-                          height: 33,
-                          width: 33,
-                          child: CircleAvatar(
-                            child: SvgPicture.asset(ImageAssets.grouplogoSVG),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                )),
-          ],
+          ),
         ),
       ),
     );

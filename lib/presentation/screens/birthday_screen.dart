@@ -42,7 +42,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
         padding: const EdgeInsets.all(40.0),
         child: Column(
           children: [
-            Text(
+            const Text(
               'What’s your birthday?',
               style: TextStyle(
                 fontWeight: FontWeight.w600,
@@ -50,8 +50,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 fontFamily: 'SF Pro Display',
               ),
             ),
-            Gap(10),
-            Text(
+            const Gap(10),
+            const Text(
               'Choose your date of birth.\n You can always make this private later.',
               style: TextStyle(
                   fontWeight: FontWeight.w400,
@@ -61,7 +61,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                   color: Colors.grey),
               textAlign: TextAlign.center,
             ),
-            Gap(92),
+            const Gap(92),
             ScrollWheelDatePicker(
               onSelectedItemChanged: (DateTime da) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -80,15 +80,15 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 overAndUnderCenterOpacity: 0.2,
               ),
             ),
-            Gap(66),
+            const Gap(66),
             Text(
               ' $_age Years old',
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   fontFamily: 'SF Pro Text'),
             ),
-            Gap(78),
+            const Gap(78),
             ButtonWidget(
                 buttonText: 'Next',
                 onPressed: () {

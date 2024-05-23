@@ -12,47 +12,52 @@ class WalletOverview extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Wallet Overview',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.view_list),
-                  ),
-                ],
-              ),
-              const Gap(12),
-              _buildCard(
-                title: 'Current Balance',
-                amount: '\$40,689',
-                svgPath: ImageAssets.dollarlogoSVG,
-              ),
-              const Gap(8),
-              _buildCard(
-                title: 'Reward Balance',
-                amount: '\$40,689',
-                svgPath: ImageAssets.rewardlogoSVG,
-              ),
-              const Gap(8),
-              _buildCard(
-                title: 'Send Money',
-                amount: '\$1.5',
-                svgPath: ImageAssets.sendmoneylogoSVG,
-              ),
-              const Gap(8),
-              _buildCard(
-                title: 'Withdraw Money',
-                amount: '\$40,689',
-                svgPath: ImageAssets.withdrawlogoSVG,
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Wallet Overview',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Scaffold.of(context).openEndDrawer();
+                      },
+                      icon: const Icon(Icons.view_list),
+                    ),
+                  ],
+                ),
+                const Gap(12),
+                _buildCard(
+                  title: 'Current Balance',
+                  amount: '\$40,689',
+                  svgPath: ImageAssets.dollarlogoSVG,
+                ),
+                const Gap(8),
+                _buildCard(
+                  title: 'Reward Balance',
+                  amount: '\$40,689',
+                  svgPath: ImageAssets.rewardlogoSVG,
+                ),
+                const Gap(8),
+                _buildCard(
+                  title: 'Send Money',
+                  amount: '\$1.5',
+                  svgPath: ImageAssets.sendmoneylogoSVG,
+                ),
+                const Gap(8),
+                _buildCard(
+                  title: 'Withdraw Money',
+                  amount: '\$40,689',
+                  svgPath: ImageAssets.withdrawlogoSVG,
+                ),
+              ],
+            ),
           ),
         ),
       ),

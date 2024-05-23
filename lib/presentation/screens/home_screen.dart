@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const Center(child: Text('Videos')),
-            Center(child: WalletOverview()),
+            const Center(child: WalletOverview()),
             const Center(child: Text('Notifications')),
             Center(
                 child: Padding(
