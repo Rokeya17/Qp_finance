@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/emailaddress_screen.dart';
 import 'package:qp_finance/presentation/screens/widgets/appbarwidget.dart';
+import 'package:qp_finance/presentation/utility/button_widget.dart';
 import 'package:qp_finance/presentation/utility/color.dart';
 
 class GenderScreen extends StatefulWidget {
@@ -36,6 +38,7 @@ class _GenderScreenState extends State<GenderScreen> {
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                   color: Colors.black87,
+                  fontFamily: 'SF Pro Display',
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -45,6 +48,7 @@ class _GenderScreenState extends State<GenderScreen> {
                 style: TextStyle(
                   letterSpacing: -0.5,
                   fontSize: 12,
+                  fontFamily: 'SF Pro Display',
                   fontWeight: FontWeight.w400,
                   color: Colors.grey,
                 ),
@@ -56,6 +60,12 @@ class _GenderScreenState extends State<GenderScreen> {
               _buildGenderOption('Custom',
                   label:
                       "Select custome to choose another gender,\n or if you’d rather not say"),
+              Gap(164),
+              ButtonWidget(
+                  buttonText: 'Next',
+                  onPressed: () {
+                    Get.to(EmailaddressScreen());
+                  })
             ],
           ),
         ),
