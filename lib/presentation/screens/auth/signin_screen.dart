@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/auth/signup_screen.dart';
+import 'package:qp_finance/presentation/screens/home_screen.dart';
 import 'package:qp_finance/presentation/utility/button_widget.dart';
 import 'package:qp_finance/presentation/utility/color.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
@@ -124,7 +125,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       const Gap(30),
-                      ButtonWidget(buttonText: 'Sign in', onPressed: () {}),
+                      ButtonWidget(
+                          buttonText: 'Sign in',
+                          onPressed: () {
+                            Get.to(HomeScreen());
+                          }),
                       const SizedBox(height: 10),
                     ],
                   ),

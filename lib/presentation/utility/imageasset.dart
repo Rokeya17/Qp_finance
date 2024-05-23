@@ -8,4 +8,7 @@ class ImageAssets {
   static const String withdrawlogoSVG = 'assets/images/withdraw.svg';
   static const String sendmoneylogoSVG = 'assets/images/sendmoney.svg';
   static const String rewardlogoSVG = 'assets/images/reward.svg';
+  static const String moneySVG = 'assets/images/money.svg';
+  static const String frameSVG = 'assets/images/frame.svg';
+  static const String vectorSVG = 'assets/images/vector.svg';
 }
