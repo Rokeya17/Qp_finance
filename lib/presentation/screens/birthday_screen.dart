@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/gender_screen.dart';
 import 'package:qp_finance/presentation/screens/widgets/appbarwidget.dart';
 import 'package:qp_finance/presentation/utility/button_widget.dart';
 import 'package:scroll_wheel_date_picker/scroll_wheel_date_picker.dart';
@@ -38,7 +39,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             Get.back();
           }),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(40.0),
         child: Column(
           children: [
             Text(
@@ -49,6 +50,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 fontFamily: 'SF Pro Display',
               ),
             ),
+            Gap(10),
             Text(
               'Choose your date of birth.\n You can always make this private later.',
               style: TextStyle(
@@ -58,6 +60,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
               ),
               textAlign: TextAlign.center,
             ),
+            Gap(92),
             ScrollWheelDatePicker(
               onSelectedItemChanged: (DateTime da) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -76,13 +79,20 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 overAndUnderCenterOpacity: 0.2,
               ),
             ),
-            Gap(30),
+            Gap(66),
             Text(
-              'Age: $_age',
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+              ' $_age Years old',
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'SF Pro Text'),
             ),
-            Gap(30),
-            ButtonWidget(buttonText: 'Next', onPressed: () {}),
+            Gap(78),
+            ButtonWidget(
+                buttonText: 'Next',
+                onPressed: () {
+                  Get.to(GenderScreen());
+                }),
           ],
         ),
       ),

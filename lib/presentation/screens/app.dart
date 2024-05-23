@@ -9,6 +9,7 @@ class QPFinance extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: SplashScreen(),
+      theme: ThemeData(fontFamily: 'SfProDisplay'),
     );
   }
 }

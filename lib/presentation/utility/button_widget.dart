@@ -31,6 +31,7 @@ class ButtonWidget extends StatelessWidget {
             color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
+            fontFamily: 'SF Pro Text',
           ),
         ),
       ),

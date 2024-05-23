@@ -28,10 +28,12 @@ flutter:
   assets:
     - assets/images/
 
-#  fonts:
-#    - family: SF Pro Display
-#      fonts:
-#        - asset: fonts/SF-Pro-Display-Regular.ttf
-#    - family: Schyler
-#      fonts:
-#        - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: SfProDisplay
+      fonts:
+        - asset: assets/fonts/SfProDisplay-Regular.otf
+          weight: 500
+        - asset: assets/fonts/SfProDisplay-Medium.otf
+          weight: 600
+        - asset: assets/fonts/SfProDisplay-Bold.otf
+          weight: 700

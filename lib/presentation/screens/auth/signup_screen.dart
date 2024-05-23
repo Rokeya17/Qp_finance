@@ -34,25 +34,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Stack(
-                    children: [
-                      SvgPicture.asset(
-                        ImageAssets.signupSVG,
-                        fit: BoxFit.cover,
-                        width: 278.6,
-                        height: 218,
-                      ),
-                      Positioned(
-                        width: 261.81,
-                        height: 170.93,
-                        top: 159.07,
-                        left: 99.19,
-                        child: SvgPicture.asset(
-                          ImageAssets.signup2SVG,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ],
+                  SvgPicture.asset(
+                    ImageAssets.signupInfo,
+                    fit: BoxFit.cover,
+                    width: 278.6,
+                    height: 218,
                   ),
                   const SizedBox(height: 16),
                   const Text(
