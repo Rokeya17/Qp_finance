@@ -33,7 +33,7 @@ class MenuScreen extends StatelessWidget {
           Gap(5),
           _buildContainer(
             childLeft: SvgPicture.asset(ImageAssets.rewardlogoSVG),
-            childRight: Text('Group'),
+            childRight: Text('Page'),
           ),
         ],
       ),
