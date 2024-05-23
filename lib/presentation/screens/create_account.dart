@@ -65,7 +65,6 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: primaryColor,
-                          letterSpacing: -0.5,
                         ),
                         suffixIcon: IconButton(
                           icon: const Icon(Icons.clear),
@@ -86,7 +85,6 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: primaryColor,
-                          letterSpacing: -0.5,
                         ),
                         border: const UnderlineInputBorder(),
                         suffixIcon: IconButton(
