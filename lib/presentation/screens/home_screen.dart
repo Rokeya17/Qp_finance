@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/wallet_overview.dart';
+import 'package:qp_finance/presentation/screens/weather_screen.dart';
 
 import '../utility/circular_iconbutton.dart';
+import 'menu_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,8 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(width: 8),
             CircularIconButton(
-              icon: Icons.rocket,
-              onTap: () {},
+              icon: Icons.foggy,
+              onTap: () {
+                Get.to(const WeatherScreen());
+              },
             ),
           ],
           bottom: const TabBar(
@@ -41,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.video_collection_outlined),
               ),
               Tab(
-                icon: Icon(Icons.delivery_dining),
+                icon: Icon(Icons.wallet),
               ),
               Tab(
                 icon: Icon(Icons.notifications),
@@ -76,9 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const Center(child: Text('Videos')),
-            const Center(child: Text('Deliveries')),
+            Center(child: WalletOverview()),
             const Center(child: Text('Notifications')),
-            const Center(child: Text('Profile')),
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MenuScreen(),
+            )),
           ],
         ),
       ),
