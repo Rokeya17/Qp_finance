@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/controllers/signin_controller.dart';
 import 'package:qp_finance/presentation/screens/auth/signup_screen.dart';
 import 'package:qp_finance/presentation/screens/home_screen.dart';
 import 'package:qp_finance/presentation/utility/button_widget.dart';
@@ -15,9 +16,22 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final TextEditingController _emailEditingController = TextEditingController();
+  final TextEditingController _emailEditingController =
+      TextEditingController(text: 'anik.ba@pakizatvl.com');
   final TextEditingController _passwordEditingController =
-      TextEditingController();
+      TextEditingController(text: '12345678As@');
+
+  Future<void> signIn(SigninController signInController) async {
+    final isSucess = await signInController.userSignin(
+        _emailEditingController.text.trim(), _passwordEditingController.text);
+    print(isSucess);
+    if (isSucess) {
+      Get.offAll(HomeScreen());
+    } else {
+      print(isSucess);
+      Get.snackbar("Error", "Try Again");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -125,11 +139,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       const Gap(30),
-                      ButtonWidget(
-                          buttonText: 'Sign in',
-                          onPressed: () {
-                            Get.to(HomeScreen());
-                          }),
+                      GetBuilder<SigninController>(builder: (controller) {
+                        if (controller.inprogress) {
+                          Center(child: CircularProgressIndicator());
+                        }
+                        return ButtonWidget(
+                            buttonText: 'Sign in',
+                            onPressed: () {
+                              signIn(controller);
+                            });
+                      }),
                       const SizedBox(height: 10),
                     ],
                   ),

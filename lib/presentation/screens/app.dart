@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/core/binders.dart';
 import 'package:qp_finance/presentation/screens/splash_screen.dart';
 
 class QPFinance extends StatelessWidget {
@@ -9,6 +10,7 @@ class QPFinance extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       home: SplashScreen(),
+      initialBinding: StateBinders(),
       theme: ThemeData(fontFamily: 'SfProDisplay'),
     );
   }
