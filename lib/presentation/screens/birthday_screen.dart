@@ -37,55 +37,53 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
           onPressed: () {
             Get.back();
           }),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Text(
-                'What’s your birthday?',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18,
-                  fontFamily: 'SF Pro Display',
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Text(
+              'What’s your birthday?',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+                fontFamily: 'SF Pro Display',
               ),
-              Text(
-                'Choose your date of birth.\n You can always make this private later.',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                  fontFamily: 'SF Pro Display',
-                ),
-                textAlign: TextAlign.center,
+            ),
+            Text(
+              'Choose your date of birth.\n You can always make this private later.',
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+                fontFamily: 'SF Pro Display',
               ),
-              ScrollWheelDatePicker(
-                onSelectedItemChanged: (DateTime da) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    setState(() {
-                      _selectedDate = da;
-                      _calculateAge();
-                    });
+              textAlign: TextAlign.center,
+            ),
+            ScrollWheelDatePicker(
+              onSelectedItemChanged: (DateTime da) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  setState(() {
+                    _selectedDate = da;
+                    _calculateAge();
                   });
-                },
-                theme: FlatDatePickerTheme(
-                  backgroundColor: Colors.white,
-                  overlay: ScrollWheelDatePickerOverlay.holo,
-                  itemTextStyle:
-                      defaultItemTextStyle.copyWith(color: Colors.black),
-                  overlayColor: Colors.black,
-                  overAndUnderCenterOpacity: 0.2,
-                ),
+                });
+              },
+              theme: FlatDatePickerTheme(
+                backgroundColor: Colors.white,
+                overlay: ScrollWheelDatePickerOverlay.holo,
+                itemTextStyle:
+                    defaultItemTextStyle.copyWith(color: Colors.black),
+                overlayColor: Colors.black,
+                overAndUnderCenterOpacity: 0.2,
               ),
-              Gap(66),
-              Text(
-                'Age: $_age',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-              ),
-              Gap(78),
-              ButtonWidget(buttonText: 'Next', onPressed: () {}),
-            ],
-          ),
+            ),
+            Gap(30),
+            Text(
+              'Age: $_age',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+            ),
+            Gap(30),
+            ButtonWidget(buttonText: 'Next', onPressed: () {}),
+          ],
         ),
       ),
     );
