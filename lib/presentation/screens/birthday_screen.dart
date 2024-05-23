@@ -54,10 +54,11 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             Text(
               'Choose your date of birth.\n You can always make this private later.',
               style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 12,
-                fontFamily: 'SF Pro Display',
-              ),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                  fontFamily: 'SF Pro Display',
+                  letterSpacing: -0.5,
+                  color: Colors.grey),
               textAlign: TextAlign.center,
             ),
             Gap(92),

@@ -45,8 +45,8 @@ class _CreateAccountState extends State<CreateAccount> {
               const Text(
                 'Enter the name you use in real life.',
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
                   color: Colors.grey,
                   fontFamily: 'SF Pro Display',
                 ),

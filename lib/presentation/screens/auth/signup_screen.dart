@@ -43,19 +43,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 16),
                   const Text(
                     "Join Quantum possibilities",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      letterSpacing: -0.5,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 16),
                   const Text(
                     'We’ll help you',
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey,
+                      letterSpacing: -0.5,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   const Gap(5),
                   const Text(
                     'create a new account in a few easy steps.',
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey,
+                      letterSpacing: -0.5,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                   const Gap(80),
@@ -87,7 +99,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: () {},
                     child: const Text(
                       'Already have an account?',
-                      style: TextStyle(color: primaryColor),
+                      style: TextStyle(
+                        color: primaryColor,
+                        letterSpacing: -0.5,
+                      ),
                     ),
                   ),
                 ],
