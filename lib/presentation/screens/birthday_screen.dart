@@ -11,6 +11,7 @@ class BirthdayScreen extends StatelessWidget {
       body: Column(
         children: [
           Appbarwidget(title: 'Birthday', onPressed: () {}),
+          Text('What’s your birthday?',),
           ButtonWidget(buttonText: 'Next', onPressed: () {}),
         ],
       ),
