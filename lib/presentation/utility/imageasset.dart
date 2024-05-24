@@ -12,6 +12,8 @@ class ImageAssets {
   static const String pageSVG = 'assets/images/page.svg';
   static const String adsSVG = 'assets/images/ads.svg';
   static const String logoutSVG = 'assets/images/wallet.svg';
+  static const String feedbackSVG = 'assets/images/feedback.svg';
+  static const String settingdSVG = 'assets/images/Setting_line.svg';
   static const String groupSVG =
       'assets/images/heroicons-outline_switch-vertical.svg';
 }

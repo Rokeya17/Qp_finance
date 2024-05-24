@@ -18,6 +18,8 @@ dependencies:
   gap: ^3.0.1
   scroll_wheel_date_picker: ^0.0.2+1
   http: ^1.2.1
+  flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

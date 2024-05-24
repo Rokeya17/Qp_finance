@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/weather/weather_screen.dart';
 
 import '../../utility/imageasset.dart';
 
@@ -39,7 +40,7 @@ class WalletDashboardMenu extends StatelessWidget {
             leading: SvgPicture.asset(ImageAssets.moneySVG),
             title: const Text('Weather'),
             onTap: () {
-              Get.back();
+              Get.to(WeatherScreen());
             },
           ),
           ListTile(

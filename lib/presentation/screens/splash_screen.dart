@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:qp_finance/presentation/screens/home_screen.dart';
+import 'package:qp_finance/presentation/screens/auth/signin_screen.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> goToNextScreen() async {
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Get.offAll(const HomeScreen());
+      Get.offAll(const SignInScreen());
     });
   }
 

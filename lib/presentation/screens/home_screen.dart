@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/wallet_overview.dart';
-import 'package:qp_finance/presentation/screens/weather_screen.dart';
 
 import '../utility/circular_iconbutton.dart';
 import 'menu_screen.dart';
@@ -33,9 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(width: 8),
             CircularIconButton(
               icon: Icons.foggy,
-              onTap: () {
-                Get.to(const WeatherScreen());
-              },
+              onTap: () {},
             ),
           ],
           bottom: const TabBar(
