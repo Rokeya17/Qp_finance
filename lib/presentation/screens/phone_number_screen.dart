@@ -29,15 +29,15 @@ class PhoneNumberScreen extends StatelessWidget {
       required this.year});
 
   final _formkey = GlobalKey<FormState>();
-  String? ValidPhoneNumber(String? phoneNumber) {
-    RegExp PhoneNumberRegex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{11,}$');
-    final isPhoneNumberValid = PhoneNumberRegex.hasMatch(phoneNumber ?? '');
+  String? validPhoneNumber(String? phoneNumber) {
+    RegExp phoneNumberRegex = RegExp(r'^[0-9]{11}$');
+    final isPhoneNumberValid = phoneNumberRegex.hasMatch(phoneNumber ?? '');
     if (!isPhoneNumberValid) {
-      return ' Please enter a valid Phone Number';
+      return 'Please enter a valid 11-digit Phone Number';
     }
     return null;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class PhoneNumberScreen extends StatelessWidget {
                       onPressed: () {},
                     ),
                   ),
-                  validator: ValidPhoneNumber,
+                  validator: validPhoneNumber,
                 ),
                 const Gap(65),
                 ButtonWidget(
@@ -109,7 +109,7 @@ class PhoneNumberScreen extends StatelessWidget {
                         gender: gender,
                         day: day,
                         month: month,
-                        year: year,
+                        year: year, userEmail: '',
                       ));
                     })
               ],

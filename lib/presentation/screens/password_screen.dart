@@ -10,23 +10,24 @@ class PasswordScreen extends StatefulWidget {
   final String phoneNumber;
   final String firstName;
   final String lastName;
-  final String email;
+  final String userEmail; // Change the parameter name to avoid conflict
   final String gender;
   final String day;
   final String month;
   final String year;
 
   PasswordScreen(
-      {Key? key,
-      required this.phoneNumber,
-      required this.firstName,
-      required this.lastName,
-      required this.email,
-      required this.gender,
-      required this.day,
-      required this.month,
-      required this.year})
-      : super(key: key);
+      {super.key,
+        required this.phoneNumber,
+        required this.firstName,
+        required this.lastName,
+        required this.userEmail,
+        required this.gender,
+        required this.day,
+        required this.month,
+        required this.year, required String email});
+
+
 
   @override
   _PasswordScreenState createState() => _PasswordScreenState();
@@ -37,14 +38,14 @@ class _PasswordScreenState extends State<PasswordScreen> {
   bool _passwordVisibility = false;
   final _formkey = GlobalKey<FormState>();
   String? ValidPassword(String? password) {
-    RegExp passwordRegex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+    RegExp passwordRegex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
     final isPasswordValid = passwordRegex.hasMatch(password ?? '');
     if (!isPasswordValid) {
-      return ' Please enter a valid password';
+      return 'Password must contain at least one uppercase letter, one lowercase letter, one number, and be at least 8 characters long.';
     }
     return null;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Gap(50),
+                const Gap(50),
                 TextFormField(
                   controller: _passwordController,
                   keyboardType: TextInputType.visiblePassword,
@@ -93,13 +94,13 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   decoration: InputDecoration(
                     border: const UnderlineInputBorder(),
                     labelText: ' Password',
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: Colors.grey,
                     ),
                     suffixIcon: IconButton(
-                      icon: Icon(Icons.clear),
+                      icon: const Icon(Icons.clear),
                       onPressed: () {
                         setState(() {
                           _passwordVisibility = !_passwordVisibility;
@@ -107,12 +108,19 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       },
                     ),
                   ),
-                  validator: ValidPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a password';
+                    } else {
+                      return ValidPassword(value);
+                    }
+                  },
                 ),
-                Gap(65),
+
+                const Gap(65),
                 GetBuilder<SignupController>(builder: (controller) {
                   if (controller.inProgress) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                   return ButtonWidget(
                     buttonText: 'Next',
@@ -122,7 +130,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                           .userSignup(
                             widget.firstName,
                             widget.lastName,
-                            widget.email,
+                            widget.userEmail,
                             widget.phoneNumber,
                             _passwordController.text,
                             widget.gender,

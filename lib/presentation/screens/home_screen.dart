@@ -47,16 +47,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
           bottom:  TabBar(
             tabs: [
-              Tab(
+              const Tab(
                 icon: Icon(Icons.home),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.video_collection_outlined),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.wallet),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.notifications),
               ),
               Tab(
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       shape: BoxShape.circle,
                       border: Border.all(color: primaryColor, width: 2),
                     ),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       backgroundImage: NetworkImage(
                         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D',
                       ),

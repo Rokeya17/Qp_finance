@@ -20,14 +20,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
       backgroundColor: Colors.blue,
       body: GetBuilder<WeatherController>(builder: (controller) {
         if (controller.inprogress) {
-          Center(child: CircularProgressIndicator());
+          const Center(child: CircularProgressIndicator());
         }
 
         return Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
             children: [
-              SizedBox(height: 52),
+              const SizedBox(height: 52),
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -40,13 +40,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Row(
                     children: [
                       IconButton(onPressed: (){
                         Get.back();
-                      }, icon: Icon(Icons.arrow_back)),
-                      SizedBox(width: 10),
+                      }, icon: const Icon(Icons.arrow_back)),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           'Search...',
@@ -56,12 +56,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           ),
                         ),
                       ),
-                      Icon(Icons.mic),
+                      const Icon(Icons.mic),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _showSearchList
                   ? Expanded(
                       child: ListView.builder(
@@ -81,7 +81,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               'Manage Cities',
                               style: TextStyle(
                                   fontSize: 36,
@@ -90,12 +90,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                             IconButton(
                               onPressed: () {},
-                              icon: Icon(Icons.list),
+                              icon: const Icon(Icons.list),
                               color: Colors.white,
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         buildWeatherInfoContainer(
                           date: 'Today, 12 September',
                           location: 'Dhaka',
@@ -148,29 +148,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
           width: 2,
         ),
       ),
-      margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             date,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Row(
             children: [
-              Icon(Icons.location_on_outlined),
-              SizedBox(width: 5),
+              const Icon(Icons.location_on_outlined),
+              const SizedBox(width: 5),
               Text(
                 location,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 aqi + ' ' + temperature,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
               ),
             ],
           ),

@@ -13,13 +13,14 @@ class GenderScreen extends StatefulWidget {
   final String firstName;
   final String lastName;
 
-  GenderScreen(
-      {super.key,
-      required this.date,
-      required this.year,
-      required this.month,
-      required this.firstName,
-      required this.lastName});
+  GenderScreen({
+    Key? key,
+    required this.date,
+    required this.year,
+    required this.month,
+    required this.firstName,
+    required this.lastName,
+  });
 
   @override
   _GenderScreenState createState() => _GenderScreenState();
@@ -27,6 +28,7 @@ class GenderScreen extends StatefulWidget {
 
 class _GenderScreenState extends State<GenderScreen> {
   String _selectedGender = '';
+  bool _isButtonEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,20 +73,24 @@ class _GenderScreenState extends State<GenderScreen> {
               _buildGenderOption('Male'),
               _buildGenderOption('Custom',
                   label:
-                      "Select custome to choose another gender,\n or if you’d rather not say"),
-              Gap(164),
+                  "Select custom to choose another gender,\n or if you’d rather not say"),
+              const Gap(164),
               ButtonWidget(
-                  buttonText: 'Next',
-                  onPressed: () {
-                    Get.to(EmailaddressScreen(
-                      gender: '65018b21577b4590853ef574',
-                      firstName: widget.firstName,
-                      lastName: widget.lastName,
-                      day: widget.date,
-                      year: widget.year,
-                      month: widget.month,
-                    ));
-                  })
+                buttonText: 'Next',
+                onPressed: _isButtonEnabled
+                    ? () {
+                  Get.to(EmailaddressScreen(
+                    gender: '65018b21577b4590853ef574',
+                    firstName: widget.firstName,
+                    lastName: widget.lastName,
+                    day: widget.date,
+                    year: widget.year,
+                    month: widget.month,
+                  ));
+                }
+                    : () {},
+
+              )
             ],
           ),
         ),
@@ -97,6 +103,7 @@ class _GenderScreenState extends State<GenderScreen> {
       onTap: () {
         setState(() {
           _selectedGender = gender;
+          _isButtonEnabled = true;
         });
       },
       child: Padding(
@@ -120,13 +127,13 @@ class _GenderScreenState extends State<GenderScreen> {
             trailing: _buildTrailingIcon(gender),
             subtitle: label != null
                 ? Text(
-                    label,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.grey,
-                    ),
-                  )
+              label,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Colors.grey,
+              ),
+            )
                 : null,
           ),
         ),

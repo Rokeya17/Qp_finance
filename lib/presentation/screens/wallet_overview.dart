@@ -35,7 +35,6 @@ class _WalletOverviewState extends State<WalletOverview> {
                   ),
                   IconButton(
                     onPressed: () {
-                      print('Button tapped');
                       _globalKey.currentState!.openEndDrawer();
                     },
                     icon: const Icon(Icons.view_list),
@@ -52,19 +51,19 @@ class _WalletOverviewState extends State<WalletOverview> {
               _buildCard(
                 title: 'Reward Balance',
                 amount: '\$40,689',
-                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
+                icon: SvgPicture.asset(ImageAssets.rewardlogoSVG),
               ),
               const Gap(8),
               _buildCard(
                 title: 'Send Money',
                 amount: '\$1.5',
-                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
+                icon: SvgPicture.asset(ImageAssets.sendmoneylogoSVG),
               ),
               const Gap(8),
               _buildCard(
                 title: 'Withdraw Money',
                 amount: '\$40,689',
-                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
+                icon: SvgPicture.asset(ImageAssets.rdollarlogoSVG),
               ),
             ],
           ),

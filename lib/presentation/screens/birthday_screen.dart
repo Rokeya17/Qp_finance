@@ -10,27 +10,29 @@ class BirthdayScreen extends StatefulWidget {
   final String firstName;
   final String lastName;
   const BirthdayScreen(
-      {super.key, required this.firstName, required this.lastName});
+      {Key? key, required this.firstName, required this.lastName});
 
   @override
   State<BirthdayScreen> createState() => _BirthdayScreenState();
 }
 
 class _BirthdayScreenState extends State<BirthdayScreen> {
-  DateTime _selectedDate = DateTime.now();
+  DateTime? _selectedDate;
   int _age = 0;
 
   void _calculateAge() {
-    final currentDate = DateTime.now();
-    int age = currentDate.year - _selectedDate.year;
-    if (currentDate.month < _selectedDate.month ||
-        (currentDate.month == _selectedDate.month &&
-            currentDate.day < _selectedDate.day)) {
-      age--;
+    if (_selectedDate != null) {
+      final currentDate = DateTime.now();
+      int age = currentDate.year - _selectedDate!.year;
+      if (currentDate.month < _selectedDate!.month ||
+          (currentDate.month == _selectedDate!.month &&
+              currentDate.day < _selectedDate!.day)) {
+        age--;
+      }
+      setState(() {
+        _age = age;
+      });
     }
-    setState(() {
-      _age = age;
-    });
   }
 
   @override
@@ -78,14 +80,16 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 backgroundColor: Colors.white,
                 overlay: ScrollWheelDatePickerOverlay.holo,
                 itemTextStyle:
-                    defaultItemTextStyle.copyWith(color: Colors.black),
+                defaultItemTextStyle.copyWith(color: Colors.black),
                 overlayColor: Colors.black,
                 overAndUnderCenterOpacity: 0.2,
               ),
             ),
             const Gap(66),
             Text(
-              ' $_age Years old',
+              _selectedDate != null
+                  ? ' $_age Years old'
+                  : 'Please select your birthday',
               style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -93,16 +97,21 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             ),
             const Gap(78),
             ButtonWidget(
-                buttonText: 'Next',
-                onPressed: () {
-                  Get.to(GenderScreen(
-                    date: _selectedDate.day.toString(),
-                    year: _selectedDate.year.toString(),
-                    month: _selectedDate.month.toString(),
-                    firstName: widget.firstName,
-                    lastName: widget.lastName,
-                  ));
-                }),
+              buttonText: 'Next',
+              onPressed: _selectedDate != null &&
+                  _selectedDate!.isBefore(DateTime.now())
+                  ? () {
+                Get.to(GenderScreen(
+                  date: _selectedDate!.day.toString(),
+                  year: _selectedDate!.year.toString(),
+                  month: _selectedDate!.month.toString(),
+                  firstName: widget.firstName,
+                  lastName: widget.lastName,
+                ));
+              }
+                  : () {}, // Providing a default empty function
+
+            ),
           ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart';
+import 'package:qp_finance/presentation/screens/data/auth_controller.dart';
 
 import 'network_response.dart';
 
@@ -10,9 +11,9 @@ class NetworkCaller {
     try {
       Response response = await get(
         Uri.parse(url),
-        // headers: {
-        //    'token': AuthController.accessToken.toString()
-        // },
+        headers: {
+          'Authorization': 'Bearer ${AuthController.accessToken}',
+        },
       );
       log(response.statusCode.toString());
       log(response.body);
@@ -33,15 +34,15 @@ class NetworkCaller {
   }
 
   Future<NetworkResponse> postRequest(
-    String url,
-    Map<String, dynamic> body,
-  ) async {
+      String url,
+      Map<String, dynamic> body,
+      ) async {
     try {
       Response response = await post(
         Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
-          // 'token': AuthController.accessToken.toString()
+          'Authorization': 'Bearer ${AuthController.accessToken}',
         },
         body: jsonEncode(body),
       );
@@ -53,10 +54,6 @@ class NetworkCaller {
           response.statusCode,
           jsonDecode(response.body),
         );
-        // } else if (response.statusCode == 401) {
-        // if (!isLogin) {
-        //   await gotoLogin();
-        // }
       } else {
         return NetworkResponse(false, response.statusCode, {'': ''});
       }

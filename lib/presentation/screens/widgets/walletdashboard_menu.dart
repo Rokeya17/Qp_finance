@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/weather/weather_screen.dart';
 
 import '../../utility/imageasset.dart';
+import '../auth/signin_screen.dart';
 
 class WalletDashboardMenu extends StatelessWidget {
   const WalletDashboardMenu({super.key});
@@ -46,7 +47,11 @@ class WalletDashboardMenu extends StatelessWidget {
           ListTile(
               leading: SvgPicture.asset(ImageAssets.vectorSVG),
               title: const Text('Log Out'),
-              onTap: () {}),
+            onTap: () {
+
+              Get.offAll(const SignInScreen());
+            },
+          ),
         ],
       ),
     );
