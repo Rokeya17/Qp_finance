@@ -5,7 +5,7 @@ import 'package:qp_finance/presentation/screens/data/network_response.dart';
 class LogoutController extends GetxController {
   bool _inProgress = false;
   String _message = '';
-  String _url = 'YOUR_LOGOUT_ENDPOINT_URL';
+  String _url = '';
 
   bool get inProgress => _inProgress;
 
@@ -14,7 +14,8 @@ class LogoutController extends GetxController {
   Future<bool> logout() async {
     _inProgress = true;
     update();
-    final NetworkResponse response = await NetworkCaller().postRequest(_url, {});
+    final NetworkResponse response =
+        await NetworkCaller().postRequest(_url, {});
     _inProgress = false;
     update();
 
