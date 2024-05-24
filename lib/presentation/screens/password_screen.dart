@@ -80,7 +80,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 obscureText: !_passwordVisibility,
                 decoration: InputDecoration(
                   border: const UnderlineInputBorder(),
-                  labelText: ' Phone Number',
+                  labelText: ' Password',
                   labelStyle: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,

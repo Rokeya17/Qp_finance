@@ -96,9 +96,9 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 buttonText: 'Next',
                 onPressed: () {
                   Get.to(GenderScreen(
-                    date: '7',
-                    year: '1997',
-                    month: '10',
+                    date: _selectedDate.day.toString(),
+                    year: _selectedDate.year.toString(),
+                    month: _selectedDate.month.toString(),
                     firstName: widget.firstName,
                     lastName: widget.lastName,
                   ));

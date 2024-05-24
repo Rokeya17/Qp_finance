@@ -8,7 +8,12 @@ import 'network_response.dart';
 class NetworkCaller {
   Future<NetworkResponse> getRequest(String url) async {
     try {
-      Response response = await get(Uri.parse(url));
+      Response response = await get(
+        Uri.parse(url),
+        headers: {
+          // 'token': AuthController.accessToken.toString()
+        },
+      );
       log(response.statusCode.toString());
       log(response.body);
       if (response.statusCode == 200) {

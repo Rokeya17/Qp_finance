@@ -83,10 +83,10 @@ class EmailaddressScreen extends StatelessWidget {
                       email: _emailController.text.trim(),
                       firstName: firstName,
                       lastName: lastName,
-                      gender: '',
-                      day: '',
-                      month: '',
-                      year: '',
+                      gender: gender,
+                      day: day,
+                      month: month,
+                      year: year,
                     ));
                   })
             ],
