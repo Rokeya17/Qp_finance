@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/wallet_overview.dart';
+import 'package:qp_finance/presentation/utility/color.dart';
 
 import '../utility/circular_iconbutton.dart';
 import 'auth/controllers/weather_controller.dart';
@@ -59,13 +60,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.notifications),
               ),
               Tab(
-                icon: CircleAvatar(
-
-                  child: Image.network(
-                      fit: BoxFit.cover,
-                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D'),
+                icon: SizedBox(
+                  width: 25,
+                  height: 25,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D',
+                      ),
+                    ),
+                  ),
                 ),
               ),
+
             ],
           ),
         ),

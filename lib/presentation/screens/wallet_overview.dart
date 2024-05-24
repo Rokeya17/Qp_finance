@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:qp_finance/presentation/screens/widgets/walletdashboard_menu.dart';
-import 'package:qp_finance/presentation/utility/imageasset.dart';
+
+import '../utility/imageasset.dart';
 
 class WalletOverview extends StatefulWidget {
   const WalletOverview({super.key});
@@ -42,28 +43,28 @@ class _WalletOverviewState extends State<WalletOverview> {
                 ],
               ),
               const Gap(12),
+              const Gap(8),
               _buildCard(
                 title: 'Current Balance',
                 amount: '\$40,689',
-                svgPath: ImageAssets.dollarlogoSVG,
-              ),
-              const Gap(8),
+                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
+              ), const Gap(8),
               _buildCard(
                 title: 'Reward Balance',
                 amount: '\$40,689',
-                svgPath: ImageAssets.rewardlogoSVG,
+                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
               ),
               const Gap(8),
               _buildCard(
                 title: 'Send Money',
                 amount: '\$1.5',
-                svgPath: ImageAssets.sendmoneylogoSVG,
+                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
               ),
               const Gap(8),
               _buildCard(
                 title: 'Withdraw Money',
                 amount: '\$40,689',
-                svgPath: ImageAssets.withdrawlogoSVG,
+                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
               ),
             ],
           ),
@@ -72,10 +73,11 @@ class _WalletOverviewState extends State<WalletOverview> {
     );
   }
 
-  Widget _buildCard(
-      {required String title,
-      required String amount,
-      required String svgPath}) {
+  Widget _buildCard({
+    required String title,
+    required String amount,
+    required Widget icon,
+  }) {
     return Center(
       child: Container(
         height: 94,
@@ -113,7 +115,7 @@ class _WalletOverviewState extends State<WalletOverview> {
                   ),
                 ],
               ),
-              SvgPicture.asset(svgPath),
+              icon,
             ],
           ),
         ),
