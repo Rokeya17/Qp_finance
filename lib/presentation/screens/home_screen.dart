@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {},
             ),
           ],
-          bottom: const TabBar(
+          bottom:  TabBar(
             tabs: [
               Tab(
                 icon: Icon(Icons.home),
@@ -59,7 +59,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.notifications),
               ),
               Tab(
-                icon: CircleAvatar(),
+                icon: CircleAvatar(
+
+                  child: Image.network(
+                      fit: BoxFit.cover,
+                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D'),
+                ),
               ),
             ],
           ),

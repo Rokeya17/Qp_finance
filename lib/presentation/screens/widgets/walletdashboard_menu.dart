@@ -30,7 +30,7 @@ class WalletDashboardMenu extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: SvgPicture.asset(ImageAssets.frameSVG),
+            leading: SvgPicture.asset(ImageAssets.logoutSVG),
             title: const Text('Wallet Dashboard'),
             onTap: () {
               Get.back();

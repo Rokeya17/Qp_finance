@@ -6,7 +6,7 @@ import 'package:qp_finance/presentation/screens/data/network_response.dart';
 class WeatherController extends GetxController {
   bool _inProgress = false;
   String _message = '';
-  String _url =
+  final String _url =
       'https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=0dadc0ec41869d72cab605ebf70d5c96';
 
   bool get inprogress => _inProgress;

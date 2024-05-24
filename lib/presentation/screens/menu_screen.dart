@@ -29,34 +29,34 @@ class MenuScreen extends StatelessWidget {
                   ),
                 ),
                 childRight: const Text("Rokeya Yasmin Mim")),
-            Gap(10),
+            const Gap(10),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.groupSVG),
               childRight:
-                  Text('Group', style: TextStyle(fontWeight: FontWeight.w600)),
+                  const Text('Group', style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.pageSVG),
               childRight:
-                  Text('Page', style: TextStyle(fontWeight: FontWeight.w600)),
+                  const Text('Page', style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.adsSVG),
-              childRight: Text('Ads Manager',
+              childRight: const Text('Ads Manager',
                   style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.pageSVG),
-              childRight: Text('Marketplace',
+              childRight: const Text('Marketplace',
                   style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.adsSVG),
-              childRight: Text(
+              childRight: const Text(
                 'video',
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
@@ -66,7 +66,7 @@ class MenuScreen extends StatelessWidget {
               height: 34,
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'See more',
                   style: TextStyle(
                       fontSize: 15,
@@ -92,8 +92,8 @@ class MenuScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
+                      const SizedBox(width: 8),
+                      const Text(
                         'Settings & privacy',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
@@ -112,8 +112,8 @@ class MenuScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
+                      const SizedBox(width: 8),
+                      const Text(
                         'Give us Feedback',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),
@@ -126,7 +126,7 @@ class MenuScreen extends StatelessWidget {
                         onPressed: () async {
                           bool success = await logoutController.logout();
                           if (success) {
-                            Get.offAll(SignInScreen());
+                            Get.offAll(const SignInScreen());
                           } else {
                             Get.snackbar('Error', logoutController.message,
                                 snackPosition: SnackPosition.BOTTOM);
@@ -140,8 +140,8 @@ class MenuScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
+                      const SizedBox(width: 8),
+                      const Text(
                         'Logout',
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w600),

@@ -43,7 +43,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Row(
                     children: [
-                      Icon(Icons.arrow_back),
+                      IconButton(onPressed: (){
+                        Get.back();
+                      }, icon: Icon(Icons.arrow_back)),
                       SizedBox(width: 10),
                       Expanded(
                         child: Text(
@@ -98,7 +100,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           date: 'Today, 12 September',
                           location: 'Dhaka',
                           aqi: 'AQI 29',
-                          temperature: controller.weatherModel.main!.tempMax
+                          temperature: controller.weatherModel.main?.tempMax
                                   .toString() ??
                               'maxtemp',
                         ),
