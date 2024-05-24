@@ -17,19 +17,20 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailEditingController =
-  TextEditingController(text: 'anik.ba@pakizatvl.com');
+      TextEditingController(text: 'anik.ba@pakizatvl.com');
   final TextEditingController _passwordEditingController =
-  TextEditingController(text: '12345678As@');
+      TextEditingController(text: '12345678As@');
 
   Future<void> signIn(SigninController signInController) async {
     final isSucess = await signInController.userSignin(
         _emailEditingController.text.trim(), _passwordEditingController.text);
     print(isSucess);
     if (isSucess) {
-      Get.offAll(HomeScreen());
+      Get.offAll(const HomeScreen());
+      Get.snackbar("Success", signInController.message);
     } else {
       print(isSucess);
-      Get.snackbar("Error", "Try Again");
+      Get.snackbar("Error", signInController.message);
     }
   }
 
@@ -141,7 +142,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       const Gap(30),
                       GetBuilder<SigninController>(builder: (controller) {
                         if (controller.inprogress) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(
+                              child: CircularProgressIndicator());
                         }
                         return ButtonWidget(
                             buttonText: 'Sign in',
