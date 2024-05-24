@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qp_finance/presentation/screens/wallet_overview.dart';
 
 import '../utility/circular_iconbutton.dart';
+import 'auth/controllers/weather_controller.dart';
 import 'menu_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +13,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.find<WeatherController>().getWeather();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

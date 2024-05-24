@@ -10,9 +10,9 @@ class NetworkCaller {
     try {
       Response response = await get(
         Uri.parse(url),
-        headers: {
-          // 'token': AuthController.accessToken.toString()
-        },
+        // headers: {
+        //    'token': AuthController.accessToken.toString()
+        // },
       );
       log(response.statusCode.toString());
       log(response.body);
