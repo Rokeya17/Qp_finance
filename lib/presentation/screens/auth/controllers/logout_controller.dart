@@ -5,7 +5,7 @@ import 'package:qp_finance/presentation/screens/data/network_response.dart';
 class LogoutController extends GetxController {
   bool _inProgress = false;
   String _message = '';
-  String _url = '';
+  String _url = 'https://quantumpossibilities.eu:82/api/logout';
 
   bool get inProgress => _inProgress;
 
