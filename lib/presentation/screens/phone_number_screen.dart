@@ -28,6 +28,16 @@ class PhoneNumberScreen extends StatelessWidget {
       required this.month,
       required this.year});
 
+  final _formkey = GlobalKey<FormState>();
+  String? ValidPhoneNumber(String? phoneNumber) {
+    RegExp PhoneNumberRegex =
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{11,}$');
+    final isPhoneNumberValid = PhoneNumberRegex.hasMatch(phoneNumber ?? '');
+    if (!isPhoneNumberValid) {
+      return ' Please enter a valid Phone Number';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,65 +49,70 @@ class PhoneNumberScreen extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'Enter your Mobile Number',
-                style: TextStyle(
-                  letterSpacing: -0.5,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+          child: Form(
+            key: _formkey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'Enter your Mobile Number',
+                  style: TextStyle(
+                    letterSpacing: -0.5,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Enter the Mobile Number where you can be reached.\n No one else will see this on your profile',
-                style: TextStyle(
-                  letterSpacing: -0.5,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey,
-                  fontFamily: 'SF Pro Display',
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const Gap(50),
-              TextFormField(
-                controller: _phoneNumberController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  border: const UnderlineInputBorder(),
-                  labelText: ' Phone Number',
-                  labelStyle: const TextStyle(
+                const SizedBox(height: 10),
+                const Text(
+                  'Enter the Mobile Number where you can be reached.\n No one else will see this on your profile',
+                  style: TextStyle(
+                    letterSpacing: -0.5,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey,
+                    fontFamily: 'SF Pro Display',
                   ),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () {},
-                  ),
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              const Gap(65),
-              ButtonWidget(
-                  buttonText: 'Next',
-                  onPressed: () {
-                    Get.to(PasswordScreen(
-                      phoneNumber: _phoneNumberController.text.trim(),
-                      firstName: firstName,
-                      lastName: lastName,
-                      email: email,
-                      gender: gender,
-                      day: day,
-                      month: month,
-                      year: year,
-                    ));
-                  })
-            ],
+                const Gap(50),
+                TextFormField(
+                  controller: _phoneNumberController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: ' Phone Number',
+                    labelStyle: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.grey,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {},
+                    ),
+                  ),
+                  validator: ValidPhoneNumber,
+                ),
+                const Gap(65),
+                ButtonWidget(
+                    buttonText: 'Next',
+                    onPressed: () {
+                      _formkey.currentState!.validate();
+                      Get.to(PasswordScreen(
+                        phoneNumber: _phoneNumberController.text.trim(),
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        gender: gender,
+                        day: day,
+                        month: month,
+                        year: year,
+                      ));
+                    })
+              ],
+            ),
           ),
         ),
       ),

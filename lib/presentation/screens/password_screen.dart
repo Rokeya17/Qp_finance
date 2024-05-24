@@ -35,6 +35,15 @@ class PasswordScreen extends StatefulWidget {
 class _PasswordScreenState extends State<PasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool _passwordVisibility = false;
+  final _formkey = GlobalKey<FormState>();
+  String? ValidPassword(String? password) {
+    RegExp passwordRegex =
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
+    final isPasswordValid = passwordRegex.hasMatch(password ?? '');
+    if (!isPasswordValid) {
+      return ' Please enter a valid password';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,90 +57,95 @@ class _PasswordScreenState extends State<PasswordScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'Enter your Password',
-                style: TextStyle(
-                  letterSpacing: -0.5,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+          child: Form(
+            key: _formkey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'Enter your Password',
+                  style: TextStyle(
+                    letterSpacing: -0.5,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Password must contain at least one uppercase letter,\n one lowercase letter, one number, and one symbol.',
-                style: TextStyle(
-                  letterSpacing: -0.5,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey,
-                  fontFamily: 'SF Pro Display',
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Gap(50),
-              TextFormField(
-                controller: _passwordController,
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: !_passwordVisibility,
-                decoration: InputDecoration(
-                  border: const UnderlineInputBorder(),
-                  labelText: ' Password',
-                  labelStyle: TextStyle(
+                const SizedBox(height: 10),
+                const Text(
+                  'Password must contain at least one uppercase letter,\n one lowercase letter, one number, and one symbol.',
+                  style: TextStyle(
+                    letterSpacing: -0.5,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey,
+                    fontFamily: 'SF Pro Display',
                   ),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
-                    onPressed: () {
-                      setState(() {
-                        _passwordVisibility = !_passwordVisibility;
-                      });
-                    },
-                  ),
+                  textAlign: TextAlign.center,
                 ),
-              ),
-              Gap(65),
-              GetBuilder<SignupController>(builder: (controller) {
-                if (controller.inProgress) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                return ButtonWidget(
-                  buttonText: 'Next',
-                  onPressed: () {
-                    controller
-                        .userSignup(
-                          widget.firstName,
-                          widget.lastName,
-                          widget.email,
-                          widget.phoneNumber,
-                          _passwordController.text,
-                          widget.gender,
-                          widget.day,
-                          widget.month,
-                          widget.year,
-                        )
-                        .then((value) => {
-                              if (value)
-                                {
-                                  Get.offAll(const HomeScreen()),
-                                  Get.snackbar("Success", controller.message)
-                                }
-                              else
-                                {
-                                  print(value),
-                                  Get.snackbar("Error", controller.message)
-                                }
-                            });
-                  },
-                );
-              }),
-            ],
+                Gap(50),
+                TextFormField(
+                  controller: _passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: !_passwordVisibility,
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: ' Password',
+                    labelStyle: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.grey,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {
+                        setState(() {
+                          _passwordVisibility = !_passwordVisibility;
+                        });
+                      },
+                    ),
+                  ),
+                  validator: ValidPassword,
+                ),
+                Gap(65),
+                GetBuilder<SignupController>(builder: (controller) {
+                  if (controller.inProgress) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  return ButtonWidget(
+                    buttonText: 'Next',
+                    onPressed: () {
+                      _formkey.currentState!.validate();
+                      controller
+                          .userSignup(
+                            widget.firstName,
+                            widget.lastName,
+                            widget.email,
+                            widget.phoneNumber,
+                            _passwordController.text,
+                            widget.gender,
+                            widget.day,
+                            widget.month,
+                            widget.year,
+                          )
+                          .then((value) => {
+                                if (value)
+                                  {
+                                    Get.offAll(const HomeScreen()),
+                                    Get.snackbar("Success", controller.message)
+                                  }
+                                else
+                                  {
+                                    print(value),
+                                    Get.snackbar("Error", controller.message)
+                                  }
+                              });
+                    },
+                  );
+                }),
+              ],
+            ),
           ),
         ),
       ),
