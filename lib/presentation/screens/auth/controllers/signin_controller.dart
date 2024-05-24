@@ -12,6 +12,7 @@ class SigninController extends GetxController {
   bool get inprogress => _inProgress;
 
   String get message => _message;
+
   SignInModel get signInModel => _signInModel;
 
   Future<bool> userSignin(String email, String password) async {
@@ -24,22 +25,13 @@ class SigninController extends GetxController {
     _inProgress = false;
     update();
 
-    if (response.responseJson != null &&
-        response.responseJson is Map<String, dynamic>) {
-      final responseJson = response.responseJson as Map<String, dynamic>;
-
-      if (responseJson['status'] == 200) {
-        _signInModel = SignInModel.fromJson(responseJson);
-        _message = responseJson['message'] ?? '';
-        update();
-        return true;
-      } else {
-        _message = responseJson['message'] ?? 'An error occurred';
-        update();
-        return false;
-      }
+    if (response.responseJson!['status'] == 200) {
+      _signInModel = SignInModel.fromJson(response.responseJson!);
+      _message = response.responseJson!['message'] ?? '';
+      update();
+      return true;
     } else {
-      _message = 'Invalid response from server';
+      _message = response.responseJson!['message'] ?? 'An error occurred';
       update();
       return false;
     }

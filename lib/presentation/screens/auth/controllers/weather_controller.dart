@@ -13,6 +13,7 @@ class WeatherController extends GetxController {
 
   String get message => _message;
   WeatherModel _weatherModel = WeatherModel();
+
   WeatherModel get weatherModel => _weatherModel;
 
   Future<bool> getWeather() async {
@@ -22,21 +23,12 @@ class WeatherController extends GetxController {
     _inProgress = false;
     update();
 
-    if (response.responseJson != null &&
-        response.responseJson is Map<String, dynamic>) {
-      final responseJson = response.responseJson as Map<String, dynamic>;
-
-      if (responseJson['status'] == 200) {
-        _weatherModel = WeatherModel.fromJson(responseJson);
-        update();
-        return true;
-      } else {
-        _message = 'An error occurred';
-        update();
-        return false;
-      }
+    if (response.isSuccess) {
+      _weatherModel = WeatherModel.fromJson(response.responseJson!);
+      update();
+      return true;
     } else {
-      _message = 'Invalid response from server';
+      _message = 'An error occurred';
       update();
       return false;
     }

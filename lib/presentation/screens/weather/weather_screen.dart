@@ -139,7 +139,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       width: double.infinity,
       height: 100,
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Colors.blueGrey,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color: Colors.white,

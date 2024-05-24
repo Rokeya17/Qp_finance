@@ -20,7 +20,7 @@ class NetworkCaller {
         return NetworkResponse(
             true, response.statusCode, jsonDecode(response.body));
       } else {
-        return NetworkResponse(false, response.statusCode, null);
+        return NetworkResponse(false, response.statusCode, {'': ''});
       }
     } catch (e) {
       log(e.toString());
@@ -28,7 +28,7 @@ class NetworkCaller {
     return NetworkResponse(
       false,
       -1,
-      null,
+      {'': ''},
     );
   }
 
@@ -58,11 +58,11 @@ class NetworkCaller {
         //   await gotoLogin();
         // }
       } else {
-        return NetworkResponse(false, response.statusCode, null);
+        return NetworkResponse(false, response.statusCode, {'': ''});
       }
     } catch (e) {
       log(e.toString());
     }
-    return NetworkResponse(false, -1, null);
+    return NetworkResponse(false, -1, {'': ''});
   }
 }
