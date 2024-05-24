@@ -23,13 +23,23 @@ class SigninController extends GetxController {
     });
     _inProgress = false;
     update();
-    if (response.responseJson!['status'] == 200) {
-      _signInModel = SignInModel.fromJson(response.responseJson ?? []);
-      _message = response.responseJson!['message'] ?? '';
-      update();
-      return true;
+
+    if (response.responseJson != null &&
+        response.responseJson is Map<String, dynamic>) {
+      final responseJson = response.responseJson as Map<String, dynamic>;
+
+      if (responseJson['status'] == 200) {
+        _signInModel = SignInModel.fromJson(responseJson);
+        _message = responseJson['message'] ?? '';
+        update();
+        return true;
+      } else {
+        _message = responseJson['message'] ?? 'An error occurred';
+        update();
+        return false;
+      }
     } else {
-      _message = response.responseJson!['message'] ?? '';
+      _message = 'Invalid response from server';
       update();
       return false;
     }
