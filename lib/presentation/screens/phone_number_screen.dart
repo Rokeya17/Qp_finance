@@ -36,6 +36,7 @@ class PhoneNumberScreen extends StatelessWidget {
     if (!isPhoneNumberValid) {
       return ' Please enter a valid Phone Number';
     }
+    return null;
   }
 
   @override

@@ -43,6 +43,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
     if (!isPasswordValid) {
       return ' Please enter a valid password';
     }
+    return null;
   }
 
   @override
