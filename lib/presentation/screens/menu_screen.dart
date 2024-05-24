@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
+import 'auth/controllers/logout_controller.dart';
+import 'auth/signin_screen.dart';
+
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({
-    super.key,
-  });
+  MenuScreen({super.key});
+  final LogoutController logoutController = Get.put(LogoutController());
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +123,15 @@ class MenuScreen extends StatelessWidget {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          bool success = await logoutController.logout();
+                          if (success) {
+                            Get.offAll(SignInScreen());
+                          } else {
+                            Get.snackbar('Error', logoutController.message,
+                                snackPosition: SnackPosition.BOTTOM);
+                          }
+                        },
                         icon: SizedBox(
                           width: 24,
                           height: 24,
