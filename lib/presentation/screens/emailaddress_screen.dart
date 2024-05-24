@@ -6,7 +6,20 @@ import 'package:qp_finance/presentation/screens/widgets/appbarwidget.dart';
 import 'package:qp_finance/presentation/utility/button_widget.dart';
 
 class EmailaddressScreen extends StatelessWidget {
-  EmailaddressScreen({super.key});
+  final String gender;
+  final String firstName;
+  final String lastName;
+  final String day;
+  final String month;
+  final String year;
+  EmailaddressScreen(
+      {super.key,
+      required this.gender,
+      required this.firstName,
+      required this.lastName,
+      required this.day,
+      required this.month,
+      required this.year});
 
   final TextEditingController _emailController = TextEditingController();
   @override
@@ -66,7 +79,15 @@ class EmailaddressScreen extends StatelessWidget {
               ButtonWidget(
                   buttonText: 'Next',
                   onPressed: () {
-                    Get.to(PhoneNumberScreen());
+                    Get.to(PhoneNumberScreen(
+                      email: _emailController.text.trim(),
+                      firstName: firstName,
+                      lastName: lastName,
+                      gender: '',
+                      day: '',
+                      month: '',
+                      year: '',
+                    ));
                   })
             ],
           ),

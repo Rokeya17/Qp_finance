@@ -1,13 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/controllers/signup_controller.dart';
 import 'package:qp_finance/presentation/screens/home_screen.dart';
-
-import '../utility/button_widget.dart';
-import 'widgets/appbarwidget.dart';
+import 'package:qp_finance/presentation/screens/widgets/appbarwidget.dart';
+import 'package:qp_finance/presentation/utility/button_widget.dart';
 
 class PasswordScreen extends StatefulWidget {
-  PasswordScreen({Key? key}) : super(key: key);
+  final String phoneNumber;
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String gender;
+  final String day;
+  final String month;
+  final String year;
+
+  PasswordScreen(
+      {Key? key,
+      required this.phoneNumber,
+      required this.firstName,
+      required this.lastName,
+      required this.email,
+      required this.gender,
+      required this.day,
+      required this.month,
+      required this.year})
+      : super(key: key);
 
   @override
   _PasswordScreenState createState() => _PasswordScreenState();
@@ -78,12 +97,40 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 ),
               ),
               Gap(65),
-              ButtonWidget(
-                buttonText: 'Next',
-                onPressed: () {
-                  Get.to(HomeScreen());
-                },
-              ),
+              GetBuilder<SignupController>(builder: (controller) {
+                if (controller.inProgress) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                return ButtonWidget(
+                  buttonText: 'Next',
+                  onPressed: () {
+                    controller
+                        .userSignup(
+                          widget.firstName,
+                          widget.lastName,
+                          widget.email,
+                          widget.phoneNumber,
+                          _passwordController.text,
+                          widget.gender,
+                          widget.day,
+                          widget.month,
+                          widget.year,
+                        )
+                        .then((value) => {
+                              if (value)
+                                {
+                                  Get.offAll(const HomeScreen()),
+                                  Get.snackbar("Success", controller.message)
+                                }
+                              else
+                                {
+                                  print(value),
+                                  Get.snackbar("Error", controller.message)
+                                }
+                            });
+                  },
+                );
+              }),
             ],
           ),
         ),

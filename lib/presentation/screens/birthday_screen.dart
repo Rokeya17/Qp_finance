@@ -7,7 +7,10 @@ import 'package:qp_finance/presentation/utility/button_widget.dart';
 import 'package:scroll_wheel_date_picker/scroll_wheel_date_picker.dart';
 
 class BirthdayScreen extends StatefulWidget {
-  const BirthdayScreen({super.key});
+  final String firstName;
+  final String lastName;
+  const BirthdayScreen(
+      {super.key, required this.firstName, required this.lastName});
 
   @override
   State<BirthdayScreen> createState() => _BirthdayScreenState();
@@ -92,7 +95,13 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             ButtonWidget(
                 buttonText: 'Next',
                 onPressed: () {
-                  Get.to(GenderScreen());
+                  Get.to(GenderScreen(
+                    date: '7',
+                    year: '1997',
+                    month: '10',
+                    firstName: widget.firstName,
+                    lastName: widget.lastName,
+                  ));
                 }),
           ],
         ),

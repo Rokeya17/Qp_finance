@@ -12,9 +12,9 @@ class SignupController extends GetxController {
       String firstName,
       String lastName,
       String email,
-      String phone,
+      String phoneNumber,
       String password,
-      String userRole,
+      // String userRole,
       String gender,
       String day,
       String month,
@@ -25,9 +25,9 @@ class SignupController extends GetxController {
       'first_name': firstName,
       'last_name': lastName,
       'email': email,
-      'phone': phone,
+      'phone': phoneNumber,
       'password': password,
-      'user_role': userRole,
+      'user_role': 1,
       'gender': gender,
       'day': day,
       'month': month,
@@ -39,7 +39,7 @@ class SignupController extends GetxController {
       _message = response.responseJson!['message'] ?? '';
       return true;
     } else {
-      _message = response.responseJson!['message'] ?? '';
+      _message = response.responseJson!['error'] ?? '';
       return false;
     }
   }

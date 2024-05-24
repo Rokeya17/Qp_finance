@@ -102,7 +102,10 @@ class _CreateAccountState extends State<CreateAccount> {
               ButtonWidget(
                 buttonText: 'Next',
                 onPressed: () {
-                  Get.to(const BirthdayScreen());
+                  Get.to(BirthdayScreen(
+                    firstName: _firstNameController.text.trim(),
+                    lastName: _lastNameController.text.trim(),
+                  ));
                 },
               ),
             ],

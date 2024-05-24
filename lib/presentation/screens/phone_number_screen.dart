@@ -7,8 +7,26 @@ import '../utility/button_widget.dart';
 import 'widgets/appbarwidget.dart';
 
 class PhoneNumberScreen extends StatelessWidget {
-  PhoneNumberScreen({super.key});
+  final String email;
+
+  final String firstName;
+  final String lastName;
+  final String gender;
+  final String day;
+  final String month;
+  final String year;
+
   final TextEditingController _phoneNumberController = TextEditingController();
+
+  PhoneNumberScreen(
+      {super.key,
+      required this.email,
+      required this.firstName,
+      required this.lastName,
+      required this.gender,
+      required this.day,
+      required this.month,
+      required this.year});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +86,16 @@ class PhoneNumberScreen extends StatelessWidget {
               ButtonWidget(
                   buttonText: 'Next',
                   onPressed: () {
-                    Get.to(PasswordScreen());
+                    Get.to(PasswordScreen(
+                      phoneNumber: _phoneNumberController.text.trim(),
+                      firstName: firstName,
+                      lastName: lastName,
+                      email: email,
+                      gender: gender,
+                      day: day,
+                      month: month,
+                      year: year,
+                    ));
                   })
             ],
           ),

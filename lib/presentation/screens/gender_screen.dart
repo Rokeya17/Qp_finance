@@ -7,7 +7,19 @@ import 'package:qp_finance/presentation/utility/button_widget.dart';
 import 'package:qp_finance/presentation/utility/color.dart';
 
 class GenderScreen extends StatefulWidget {
-  GenderScreen({super.key});
+  final String date;
+  final String year;
+  final String month;
+  final String firstName;
+  final String lastName;
+
+  GenderScreen(
+      {super.key,
+      required this.date,
+      required this.year,
+      required this.month,
+      required this.firstName,
+      required this.lastName});
 
   @override
   _GenderScreenState createState() => _GenderScreenState();
@@ -64,7 +76,14 @@ class _GenderScreenState extends State<GenderScreen> {
               ButtonWidget(
                   buttonText: 'Next',
                   onPressed: () {
-                    Get.to(EmailaddressScreen());
+                    Get.to(EmailaddressScreen(
+                      gender: '65018b21577b4590853ef574',
+                      firstName: widget.firstName,
+                      lastName: widget.lastName,
+                      day: widget.date,
+                      year: widget.year,
+                      month: widget.month,
+                    ));
                   })
             ],
           ),
