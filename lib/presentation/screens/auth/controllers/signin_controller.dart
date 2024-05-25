@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:qp_finance/model/signin_model.dart';
 import 'package:qp_finance/presentation/screens/data/network_caller.dart';
 import 'package:qp_finance/presentation/screens/data/network_response.dart';
-import 'package:qp_finance/presentation/screens/data/auth_controller.dart'; // Import the AuthController
+import 'package:qp_finance/presentation/screens/data/auth_controller.dart';
 
 class SigninController extends GetxController {
   bool _inProgress = false;
@@ -30,7 +30,7 @@ class SigninController extends GetxController {
       _signInModel = SignInModel.fromJson(response.responseJson!);
       _message = response.responseJson!['message'] ?? '';
 
-      // Extract and store the token
+
       String? token = response.responseJson!['accessToken'];
       if (token != null) {
         AuthController.accessToken = token;

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/signin_controller.dart';
 import 'package:qp_finance/presentation/screens/auth/signup_screen.dart';
 import 'package:qp_finance/presentation/screens/home_screen.dart';
+import 'package:qp_finance/presentation/screens/wallet_overview.dart';
 import 'package:qp_finance/presentation/utility/button_widget.dart';
 import 'package:qp_finance/presentation/utility/color.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
@@ -149,6 +150,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             buttonText: 'Sign in',
                             onPressed: () {
                               signIn(controller);
+
                             });
                       }),
                       const SizedBox(height: 10),

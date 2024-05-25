@@ -99,7 +99,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   const Gap(80),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(const SignInScreen());
+                    },
                     child: const Text(
                       'Already have an account?',
                       style: TextStyle(
