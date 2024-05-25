@@ -88,13 +88,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   sliver: SliverGrid(
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 8,
                     ),
                     delegate: SliverChildBuilderDelegate(
-                      (context, index) {
+                          (context, index) {
                         return null;
                       },
                       childCount: 6,
@@ -108,9 +108,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const Center(child: Text('Notifications')),
             Center(
                 child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: MenuScreen(),
-            )),
+                  padding: const EdgeInsets.all(8.0),
+                  child: MenuScreen(),
+                )),
           ],
         ),
       ),

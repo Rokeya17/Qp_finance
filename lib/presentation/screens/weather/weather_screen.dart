@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/weather_controller.dart';
 
 class WeatherScreen extends StatefulWidget {
-  const WeatherScreen({super.key});
+  const WeatherScreen({Key? key}) : super(key: key);
 
   @override
   _WeatherScreenState createState() => _WeatherScreenState();
@@ -20,114 +20,156 @@ class _WeatherScreenState extends State<WeatherScreen> {
       backgroundColor: Colors.blue,
       body: GetBuilder<WeatherController>(builder: (controller) {
         if (controller.inprogress) {
-          const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
 
         return Padding(
           padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 52),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _showSearchList = true;
-                  });
-                  _performSearch(_searchController.text);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: Row(
-                    children: [
-                      IconButton(onPressed: (){
-                        Get.back();
-                      }, icon: const Icon(Icons.arrow_back)),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          'Search...',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 52),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _showSearchList = true;
+                    });
+                    _performSearch(_searchController.text);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            // Open top drawer
+                            Scaffold.of(context).openEndDrawer();
+                          },
+                          icon: const Icon(Icons.search),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            'Search...',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[600]?.withOpacity(1),
+                            ),
                           ),
                         ),
-                      ),
-                      const Icon(Icons.mic),
-                    ],
+                        const Icon(Icons.mic),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              _showSearchList
-                  ? Expanded(
-                      child: ListView.builder(
-                        itemCount: _searchResults.length,
-                        itemBuilder: (context, index) {
-                          return buildWeatherInfoContainer(
-                            date: _searchResults[index],
-                            location: _searchResults[index],
-                            aqi: _searchResults[index],
-                            temperature: _searchResults[index],
-                          );
+                const SizedBox(height: 20),
+                _showSearchList
+                    ? Expanded(
+                  child: ListView.builder(
+                    itemCount: _searchResults.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(_searchResults[index]),
+                        onTap: () {
+                          // Do something when a search result is tapped
                         },
-                      ),
-                    )
-                  : Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text(
-                              'Manage Cities',
-                              style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white),
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.list),
-                              color: Colors.white,
-                            ),
-                          ],
+                      );
+                    },
+                  ),
+                )
+                    : Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:  [
+                        Text(
+                          'Manage Cities',
+                          style: TextStyle(
+                              fontSize: 36,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
                         ),
-                        const SizedBox(height: 20),
-                        buildWeatherInfoContainer(
-                          date: 'Today, 12 September',
-                          location: 'Dhaka',
-                          aqi: 'AQI 29',
-                          temperature: controller.weatherModel.main?.tempMax
-                                  .toString() ??
-                              'maxtemp',
-                        ),
-                        buildWeatherInfoContainer(
-                          date: 'Today, 12 September',
-                          location: 'Dhaka',
-                          aqi: 'AQI 29',
-                          temperature: '32° / 21°',
-                        ),
-                        buildWeatherInfoContainer(
-                          date: 'Today, 12 September',
-                          location: 'Dhaka',
-                          aqi: 'AQI 29',
-                          temperature: '32° / 21°',
-                        ),
-                        buildWeatherInfoContainer(
-                          date: 'Today, 12 September',
-                          location: 'Dhaka',
-                          aqi: 'AQI 29',
-                          temperature: '32° / 21°',
+                        IconButton(
+                          onPressed:(){} ,
+                          icon: Icon(Icons.list),
+                          color: Colors.white,
                         ),
                       ],
                     ),
-            ],
+                    const SizedBox(height: 20),
+                    buildWeatherInfoContainer(
+                      date: 'Today, 12 September',
+                      location: 'Dhaka',
+                      aqi: 'AQI 29',
+                      temperature: controller.weatherModel.main?.tempMax.toString() ?? 'maxtemp',
+                    ),
+                    buildWeatherInfoContainer(
+                      date: 'Today, 12 September',
+                      location: 'Dhaka',
+                      aqi: 'AQI 29',
+                      temperature: '32° / 21°',
+                    ),
+                    buildWeatherInfoContainer(
+                      date: 'Today, 12 September',
+                      location: 'Dhaka',
+                      aqi: 'AQI 29',
+                      temperature: '32° / 21°',
+                    ),
+                    buildWeatherInfoContainer(
+                      date: 'Today, 12 September',
+                      location: 'Dhaka',
+                      aqi: 'AQI 29',
+                      temperature: '32° / 21°',
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       }),
+      endDrawer: Drawer(
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              SizedBox(height: 24),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    prefixIcon: const Icon(Icons.search),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              // Display search results here
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _searchResults.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(_searchResults[index]),
+                      onTap: () {
+
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -182,10 +224,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void _performSearch(String query) {
     setState(() {
       _searchResults = [
-        'Today, 12 September',
         'Dhaka',
-        'AQI 29',
-        '32° / 21°',
+        'Mirpur',
+
       ];
     });
   }
