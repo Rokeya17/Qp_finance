@@ -45,24 +45,24 @@ class _WalletOverviewState extends State<WalletOverview> {
               const Gap(8),
               _buildCard(
                 title: 'Current Balance',
-                amount: '\$40,689',
+                amount: '\$601',
                 icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
               ), const Gap(8),
               _buildCard(
                 title: 'Reward Balance',
-                amount: '\$40,689',
+                amount: '\$50',
                 icon: SvgPicture.asset(ImageAssets.rewardlogoSVG),
               ),
               const Gap(8),
               _buildCard(
                 title: 'Send Money',
-                amount: '\$1.5',
+                amount: '\$110',
                 icon: SvgPicture.asset(ImageAssets.sendmoneylogoSVG),
               ),
               const Gap(8),
               _buildCard(
                 title: 'Withdraw Money',
-                amount: '\$40,689',
+                amount: '\$0',
                 icon: SvgPicture.asset(ImageAssets.rdollarlogoSVG),
               ),
             ],

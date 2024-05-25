@@ -31,7 +31,7 @@ class SigninController extends GetxController {
       _message = response.responseJson!['message'] ?? '';
 
       // Extract and store the token
-      String? token = response.responseJson!['token'];
+      String? token = response.responseJson!['accessToken'];
       if (token != null) {
         AuthController.accessToken = token;
       }

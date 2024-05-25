@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 import 'package:qp_finance/model/wallet_model.dart'; // Import the WalletSummaryModel
 import 'package:qp_finance/presentation/screens/data/network_caller.dart';
@@ -22,7 +24,7 @@ class WalletController extends GetxController {
 
     _inProgress = false;
     update();
-
+    
     if (response.statusCode == 200) {
       _walletSummaryModel = WalletSummaryModel.fromJson(response.responseJson!);
       _message = response.responseJson!['message'] ?? '';
