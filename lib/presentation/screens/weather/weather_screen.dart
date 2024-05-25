@@ -70,9 +70,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 const SizedBox(height: 20),
                 _showSearchList
                     ? Expanded(
-                  child: SearchResultWidget(
+                  child: StandardSearchBar(
                     searchValue: _searchController.text,
-                    suggestions: _searchResults,
+                    suggestions: _searchResults, width: 360,
                   ),
                 )
                     : Column(
@@ -175,7 +175,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       width: double.infinity,
       height: 100,
       decoration: BoxDecoration(
-        color: Colors.blueGrey,
+        color: Colors.blueGrey.withOpacity(1),
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color: Colors.white,
@@ -188,23 +188,30 @@ class _WeatherScreenState extends State<WeatherScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            date,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+          // Center the "Today, 12 September" text
+          Center(
+            child: Text(
+              date,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Colors.white,
+              ),
+            ),
           ),
           const SizedBox(height: 5),
           Row(
             children: [
-              const Icon(Icons.location_on_outlined),
+              const Icon(Icons.location_on_outlined, color: Colors.white),
               const SizedBox(width: 5),
               Text(
                 location,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.white),
               ),
               const SizedBox(width: 10),
               Text(
                 aqi + ' ' + temperature,
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white), // Set text color to white
               ),
             ],
           ),
@@ -215,10 +222,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   void _performSearch(String query) {
     setState(() {
+     
       _searchResults = [
-        'Dhaka',
-        'Mirpur',
+        'dhaka',
+        'mirpur',
+
       ];
     });
   }
+
 }

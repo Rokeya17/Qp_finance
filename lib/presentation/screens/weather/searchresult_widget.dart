@@ -1,33 +1,54 @@
 import 'package:flutter/material.dart';
 
-class SearchResultWidget extends StatelessWidget {
-  final String searchValue;
+class StandardSearchBar extends StatefulWidget {
+  final double width;
   final List<String> suggestions;
 
-  const SearchResultWidget({
-    Key? key,
-    required this.searchValue,
-    required this.suggestions,
-  }) : super(key: key);
+  const StandardSearchBar({super.key, required this.width, required this.suggestions, required String searchValue});
+
+
+
+  @override
+  _StandardSearchBarState createState() => _StandardSearchBarState();
+}
+
+class _StandardSearchBarState extends State<StandardSearchBar> {
+  String _query = '';
+  TextEditingController _controller = TextEditingController();
+  FocusNode _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<String> filteredSuggestions = suggestions
-        .where((suggestion) =>
-        suggestion.toLowerCase().contains(searchValue.toLowerCase()))
-        .toList();
-
-    return ListView.builder(
-      itemCount: filteredSuggestions.length,
-      itemBuilder: (context, index) {
-        final suggestion = filteredSuggestions[index];
-        return ListTile(
-          title: Text(suggestion),
-          onTap: () {
-
-          },
-        );
-      },
+    return Container(
+      width: widget.width,
+      child: TextField(
+        controller: _controller,
+        focusNode: _focusNode,
+        decoration: InputDecoration(
+          hintText: 'Search...',
+          suffixIcon: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
+              setState(() {
+                _controller.clear();
+                _query = '';
+              });
+            },
+          ),
+        ),
+        onChanged: (value) {
+          setState(() {
+            _query = value;
+          });
+        },
+      ),
     );
   }
 }

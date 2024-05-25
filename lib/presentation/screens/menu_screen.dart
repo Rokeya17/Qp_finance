@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/signin_screen.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
 import 'auth/controllers/logout_controller.dart';
@@ -136,6 +137,7 @@ class MenuScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () async {
                           await logoutController.logout();
+                          Get.offAll(const SignInScreen());
                         },
 
                         child: SizedBox(
