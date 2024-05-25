@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/weather_controller.dart';
+import 'package:qp_finance/presentation/screens/weather/searchresult_widget.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({Key? key}) : super(key: key);
@@ -53,11 +54,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         ),
                         const SizedBox(width: 10),
                         Expanded(
-                          child: Text(
-                            'Search...',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600]?.withOpacity(1),
+                          child: TextField(
+                            controller: _searchController,
+                            decoration: const InputDecoration(
+                              hintText: 'Search...',
+                              border: InputBorder.none,
                             ),
                           ),
                         ),
@@ -69,16 +70,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 const SizedBox(height: 20),
                 _showSearchList
                     ? Expanded(
-                  child: ListView.builder(
-                    itemCount: _searchResults.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(_searchResults[index]),
-                        onTap: () {
-                          // Do something when a search result is tapped
-                        },
-                      );
-                    },
+                  child: SearchResultWidget(
+                    searchValue: _searchController.text,
+                    suggestions: _searchResults,
                   ),
                 )
                     : Column(
@@ -132,42 +126,40 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ),
         );
       }),
-      endDrawer: Drawer(
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            children: [
-              SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: TextField(
-                  controller: _searchController,
-                  decoration: InputDecoration(
-                    hintText: 'Search...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    prefixIcon: const Icon(Icons.search),
+      endDrawer: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            SizedBox(height: 24),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: TextField(
+                controller: _searchController,
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
+                  prefixIcon: const Icon(Icons.search),
                 ),
               ),
-              const SizedBox(height: 16),
-              // Display search results here
-              Expanded(
-                child: ListView.builder(
-                  itemCount: _searchResults.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(_searchResults[index]),
-                      onTap: () {
-
-                      },
-                    );
-                  },
-                ),
+            ),
+            const SizedBox(height: 16),
+            // Display search results here
+            Expanded(
+              child: ListView.builder(
+                itemCount: _searchResults.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(_searchResults[index]),
+                    onTap: () {
+                      // Handle tap on search result
+                    },
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -226,7 +218,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
       _searchResults = [
         'Dhaka',
         'Mirpur',
-
       ];
     });
   }
