@@ -152,7 +152,6 @@ class MenuScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () async {
                           await logoutController.logout();
-                          Get.to(SignInScreen());
                         },
 
                         child: const Text(

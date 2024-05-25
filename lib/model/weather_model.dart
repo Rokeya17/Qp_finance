@@ -3,15 +3,15 @@ class WeatherModel {
   List<Weather>? weather;
   String? base;
   Main? main;
-  int? visibility;
+  dynamic visibility;
   Wind? wind;
   Clouds? clouds;
-  int? dt;
+  dynamic dt;
   Sys? sys;
-  int? timezone;
-  int? id;
+  dynamic timezone;
+  dynamic id;
   String? name;
-  int? cod;
+  dynamic cod;
 
   WeatherModel(
       {this.coord,
@@ -82,8 +82,8 @@ class WeatherModel {
 }
 
 class Coord {
-  double? lon;
-  double? lat;
+  dynamic lon;
+  dynamic lat;
 
   Coord({this.lon, this.lat});
 
@@ -101,7 +101,7 @@ class Coord {
 }
 
 class Weather {
-  int? id;
+  dynamic id;
   String? main;
   String? description;
   String? icon;
@@ -126,12 +126,12 @@ class Weather {
 }
 
 class Main {
-  double? temp;
-  double? feelsLike;
-  double? tempMin;
-  double? tempMax;
-  int? pressure;
-  int? humidity;
+  dynamic temp;
+  dynamic feelsLike;
+  dynamic tempMin;
+  dynamic tempMax;
+  dynamic pressure;
+  dynamic humidity;
 
   Main(
       {this.temp,
@@ -163,8 +163,8 @@ class Main {
 }
 
 class Wind {
-  int? speed;
-  int? deg;
+  dynamic speed;
+  dynamic deg;
 
   Wind({this.speed, this.deg});
 
@@ -182,7 +182,7 @@ class Wind {
 }
 
 class Clouds {
-  int? all;
+  dynamic all;
 
   Clouds({this.all});
 
@@ -198,11 +198,11 @@ class Clouds {
 }
 
 class Sys {
-  int? type;
-  int? id;
+  dynamic type;
+  dynamic id;
   String? country;
-  int? sunrise;
-  int? sunset;
+  dynamic sunrise;
+  dynamic sunset;
 
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
 

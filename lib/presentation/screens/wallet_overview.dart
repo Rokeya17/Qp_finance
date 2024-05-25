@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/controllers/dashboard_controller.dart';
 import 'package:qp_finance/presentation/screens/widgets/walletdashboard_menu.dart';
 
 import '../utility/imageasset.dart';
@@ -23,49 +25,56 @@ class _WalletOverviewState extends State<WalletOverview> {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: GetBuilder<DashboardController>(
+            builder: (controller) {
+              if(controller.inprogress) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Wallet Overview',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Wallet Overview',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          _globalKey.currentState!.openEndDrawer();
+                        },
+                        icon: const Icon(Icons.view_list),
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    onPressed: () {
-                      _globalKey.currentState!.openEndDrawer();
-                    },
-                    icon: const Icon(Icons.view_list),
+                  const Gap(12),
+                  const Gap(8),
+                  _buildCard(
+                    title: 'Current Balance',
+                    amount: controller.dashboardModel.walletBalance.toString(),
+                    icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
+                  ), const Gap(8),
+                  _buildCard(
+                    title: 'Received Money',
+                    amount: controller.dashboardModel.totalReceivedMoneyAmount.toString(),
+                    icon: SvgPicture.asset(ImageAssets.rewardlogoSVG),
+                  ),
+                  const Gap(8),
+                  _buildCard(
+                    title: 'Send Money',
+                    amount: controller.dashboardModel.totalSendMoneyAmount.toString(),
+                    icon: SvgPicture.asset(ImageAssets.sendmoneylogoSVG),
+                  ),
+                  const Gap(8),
+                  _buildCard(
+                    title: 'Withdraw Money',
+                    amount: controller.dashboardModel.totalWithdrawRequestAmount.toString(),
+                    icon: SvgPicture.asset(ImageAssets.rdollarlogoSVG),
                   ),
                 ],
-              ),
-              const Gap(12),
-              const Gap(8),
-              _buildCard(
-                title: 'Current Balance',
-                amount: '\$601',
-                icon: SvgPicture.asset(ImageAssets.dollarlogoSVG),
-              ), const Gap(8),
-              _buildCard(
-                title: 'Reward Balance',
-                amount: '\$50',
-                icon: SvgPicture.asset(ImageAssets.rewardlogoSVG),
-              ),
-              const Gap(8),
-              _buildCard(
-                title: 'Send Money',
-                amount: '\$110',
-                icon: SvgPicture.asset(ImageAssets.sendmoneylogoSVG),
-              ),
-              const Gap(8),
-              _buildCard(
-                title: 'Withdraw Money',
-                amount: '\$0',
-                icon: SvgPicture.asset(ImageAssets.rdollarlogoSVG),
-              ),
-            ],
+              );
+            }
           ),
         ),
       ),
@@ -105,7 +114,7 @@ class _WalletOverviewState extends State<WalletOverview> {
                     ),
                   ),
                   Text(
-                    amount,
+                    '\$$amount',
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,

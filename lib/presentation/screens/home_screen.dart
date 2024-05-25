@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/controllers/dashboard_controller.dart';
 import 'package:qp_finance/presentation/screens/wallet_overview.dart';
 import 'package:qp_finance/presentation/utility/color.dart';
 
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Get.find<WeatherController>().getWeather();
+      Get.find<DashboardController>().getDahBoardData();
     });
     super.initState();
   }
@@ -27,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
-      initialIndex: 2,
       child: Scaffold(
         appBar: AppBar(
           actions: [

@@ -9,6 +9,7 @@ import 'package:scroll_wheel_date_picker/scroll_wheel_date_picker.dart';
 class BirthdayScreen extends StatefulWidget {
   final String firstName;
   final String lastName;
+
   const BirthdayScreen(
       {Key? key, required this.firstName, required this.lastName});
 
@@ -28,6 +29,9 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
           (currentDate.month == _selectedDate!.month &&
               currentDate.day < _selectedDate!.day)) {
         age--;
+      }
+      if (age < 0) {
+        age = 0;
       }
       setState(() {
         _age = age;
@@ -68,6 +72,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             ),
             const Gap(92),
             ScrollWheelDatePicker(
+              lastDate: DateTime(DateTime.now().year + 1),
               onSelectedItemChanged: (DateTime da) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   setState(() {
@@ -80,7 +85,7 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
                 backgroundColor: Colors.white,
                 overlay: ScrollWheelDatePickerOverlay.holo,
                 itemTextStyle:
-                defaultItemTextStyle.copyWith(color: Colors.black),
+                    defaultItemTextStyle.copyWith(color: Colors.black),
                 overlayColor: Colors.black,
                 overAndUnderCenterOpacity: 0.2,
               ),
@@ -99,18 +104,17 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             ButtonWidget(
               buttonText: 'Next',
               onPressed: _selectedDate != null &&
-                  _selectedDate!.isBefore(DateTime.now())
+                      _selectedDate!.isBefore(DateTime.now())
                   ? () {
-                Get.to(GenderScreen(
-                  date: _selectedDate!.day.toString(),
-                  year: _selectedDate!.year.toString(),
-                  month: _selectedDate!.month.toString(),
-                  firstName: widget.firstName,
-                  lastName: widget.lastName,
-                ));
-              }
+                      Get.to(GenderScreen(
+                        date: _selectedDate!.day.toString(),
+                        year: _selectedDate!.year.toString(),
+                        month: _selectedDate!.month.toString(),
+                        firstName: widget.firstName,
+                        lastName: widget.lastName,
+                      ));
+                    }
                   : () {}, // Providing a default empty function
-
             ),
           ],
         ),

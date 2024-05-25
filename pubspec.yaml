@@ -26,6 +26,7 @@ dependencies:
   logger: ^2.3.0
   easy_search_bar: ^2.5.0
   standard_searchbar: ^2.1.1
+  scroll_datetime_picker: ^0.1.1
 
 dev_dependencies:
   flutter_test:
