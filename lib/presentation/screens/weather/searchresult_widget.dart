@@ -12,7 +12,6 @@ class SearchResultsWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(searchResults[index]),
-          // Add onTap logic for search result item
         );
       },
     );
