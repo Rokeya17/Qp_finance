@@ -13,9 +13,9 @@ class NetworkCaller {
 
   NetworkCaller()
       : accessToken = getCont.Get.find<SigninController>()
-            .signInModel
-            .accessToken
-            .toString();
+      .signInModel
+      .accessToken
+      .toString();
 
   Future<NetworkResponse> getRequest(String url) async {
     try {
@@ -52,9 +52,9 @@ class NetworkCaller {
   }
 
   Future<NetworkResponse> postRequest(
-    String url,
-    Map<String, dynamic> body,
-  ) async {
+      String url,
+      Map<String, dynamic> body,
+      ) async {
     try {
       Response response = await post(
         Uri.parse(url),

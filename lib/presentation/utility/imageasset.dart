@@ -15,6 +15,7 @@ class ImageAssets {
   static const String logoutSVG = 'assets/images/wallet.svg';
   static const String feedbackSVG = 'assets/images/feedback.svg';
   static const String settingdSVG = 'assets/images/settings.svg';
+  static const String qplogoSVG = 'assets/images/image 6.svg';
   static const String groupSVG =
       'assets/images/heroicons-outline_switch-vertical.svg';
 }
