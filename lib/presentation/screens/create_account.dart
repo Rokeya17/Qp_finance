@@ -44,7 +44,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Gap(10),
+                const Gap(10),
                 const Text(
                   'Enter the name you use in real life.',
                   style: TextStyle(
@@ -55,7 +55,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Gap(50),
+                const Gap(50),
                 Row(
                   children: [
                     Expanded(
@@ -64,7 +64,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         decoration: InputDecoration(
                           border: const UnderlineInputBorder(),
                           labelText: ' First name',
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: primaryColor,
@@ -72,7 +72,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           suffixIcon: IconButton(
                             icon: const Icon(Icons.clear),
                             onPressed: () {
-                              _lastNameController.clear();
+                              _firstNameController.clear();
                             },
                           ),
                         ),
@@ -87,7 +87,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         controller: _lastNameController,
                         decoration: InputDecoration(
                           labelText: 'Last Name',
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: primaryColor,
@@ -108,12 +108,14 @@ class _CreateAccountState extends State<CreateAccount> {
                 ButtonWidget(
                   buttonText: 'Next',
                   onPressed: () {
-                    _fromkey.currentState!.validate();
-                    Get.to(BirthdayScreen(
-                      firstName: _firstNameController.text.trim(),
-                      lastName: _lastNameController.text.trim(),
-                    ));
+                    if (_fromkey.currentState!.validate()) {
+                      Get.to(BirthdayScreen(
+                        firstName: _firstNameController.text.trim(),
+                        lastName: _lastNameController.text.trim(),
+                      ));
+                    }
                   },
+
                 ),
               ],
             ),

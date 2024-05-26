@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/signin_screen.dart';
 import 'package:qp_finance/presentation/utility/imageasset.dart';
 
 import 'auth/controllers/logout_controller.dart';
-import 'auth/signin_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   MenuScreen({super.key});
@@ -21,70 +21,78 @@ class MenuScreen extends StatelessWidget {
                 childLeft: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: SizedBox(
-                    height: 54,
-                    width: 50,
+                    height: 45,
+                    width:45,
                     child: Image.network(
                         fit: BoxFit.cover,
                         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D'),
                   ),
                 ),
-                childRight: const Text("Rokeya Yasmin Mim")),
-            Gap(10),
+                childRight: const Text("Rokeya Yasmin Mim",style:TextStyle(fontWeight: FontWeight.w600) ,)),
+            const Gap(19),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.groupSVG),
               childRight:
-                  Text('Group', style: TextStyle(fontWeight: FontWeight.w600)),
+                  const Text('Group', style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.pageSVG),
               childRight:
-                  Text('Page', style: TextStyle(fontWeight: FontWeight.w600)),
+                  const Text('Page', style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.adsSVG),
-              childRight: Text('Ads Manager',
+              childRight: const Text('Ads Manager',
                   style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.pageSVG),
-              childRight: Text('Marketplace',
+              childRight: const Text('Marketplace',
                   style: TextStyle(fontWeight: FontWeight.w600)),
             ),
-            Gap(5),
+            const Gap(5),
             _buildContainer(
               childLeft: SvgPicture.asset(ImageAssets.adsSVG),
-              childRight: Text(
+              childRight: const Text(
                 'video',
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
             ),
+            const Gap(12),
             SizedBox(
-              width: 330,
+              width: 365,
               height: 34,
               child: ElevatedButton(
                 onPressed: () {},
-                child: Text(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                ),
+                child: const Text(
                   'See more',
                   style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
-            Container(
+
+            SizedBox(
               height: 145,
               width: 330,
               child: Column(
                 children: [
                   Row(
                     children: [
-                      IconButton(
+                      TextButton(
                         onPressed: () {},
-                        icon: SizedBox(
+                        child: SizedBox(
                           width: 24,
                           height: 24,
                           child: SvgPicture.asset(
@@ -92,19 +100,21 @@ class MenuScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
-                        'Settings & privacy',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                      const SizedBox(width: 8),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Settings & privacy',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
                   Row(
                     children: [
-                      IconButton(
+                      TextButton(
                         onPressed: () {},
-                        icon: SizedBox(
+                        child: SizedBox(
                           width: 24,
                           height: 24,
                           child: SvgPicture.asset(
@@ -112,45 +122,50 @@ class MenuScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
-                        'Give us Feedback',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                      const SizedBox(width: 8),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Give us Feedback',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
                   Row(
                     children: [
-                      IconButton(
+                      TextButton(
                         onPressed: () async {
-                          bool success = await logoutController.logout();
-                          if (success) {
-                            Get.offAll(SignInScreen());
-                          } else {
-                            Get.snackbar('Error', logoutController.message,
-                                snackPosition: SnackPosition.BOTTOM);
-                          }
+                          await logoutController.logout();
+                          Get.offAll(const SignInScreen());
                         },
-                        icon: SizedBox(
+
+                        child: SizedBox(
                           width: 24,
                           height: 24,
                           child: SvgPicture.asset(
-                            ImageAssets.logoutSVG,
+                            ImageAssets.vectorSVG,
                           ),
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
-                        'Logout',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
+                      const SizedBox(width: 8),
+                      TextButton(
+                        onPressed: () async {
+                          await logoutController.logout();
+                        },
+
+                        child: const Text(
+                          'Logout',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             )
+
+
           ],
         ),
       ),

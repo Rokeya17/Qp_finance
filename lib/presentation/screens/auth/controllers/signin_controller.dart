@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
-import 'package:qp_finance/model/signin_models.dart';
+import 'package:qp_finance/model/signin_model.dart';
 import 'package:qp_finance/presentation/screens/data/network_caller.dart';
 import 'package:qp_finance/presentation/screens/data/network_response.dart';
+import 'package:qp_finance/presentation/screens/data/auth_controller.dart'; // Import the AuthController
 
 class SigninController extends GetxController {
   bool _inProgress = false;
@@ -10,18 +11,18 @@ class SigninController extends GetxController {
   String _url = 'https://quantumpossibilities.eu:82/api/login';
 
   bool get inprogress => _inProgress;
-
   String get message => _message;
-
   SignInModel get signInModel => _signInModel;
 
   Future<bool> userSignin(String email, String password) async {
     _inProgress = true;
     update();
+
     final NetworkResponse response = await NetworkCaller().postRequest(_url, {
       'email': email,
       'password': password,
     });
+
     _inProgress = false;
     update();
 

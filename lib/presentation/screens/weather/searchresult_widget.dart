@@ -1,19 +1,54 @@
 import 'package:flutter/material.dart';
 
-class SearchResultsWidget extends StatelessWidget {
-  final List<String> searchResults;
+class StandardSearchBar extends StatefulWidget {
+  final double width;
+  final List<String> suggestions;
 
-  const SearchResultsWidget({super.key, required this.searchResults});
+  const StandardSearchBar({super.key, required this.width, required this.suggestions, required String searchValue});
+
+
+
+  @override
+  _StandardSearchBarState createState() => _StandardSearchBarState();
+}
+
+class _StandardSearchBarState extends State<StandardSearchBar> {
+  String _query = '';
+  TextEditingController _controller = TextEditingController();
+  FocusNode _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: searchResults.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(searchResults[index]),
-        );
-      },
+    return Container(
+      width: widget.width,
+      child: TextField(
+        controller: _controller,
+        focusNode: _focusNode,
+        decoration: InputDecoration(
+          hintText: 'Search...',
+          suffixIcon: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
+              setState(() {
+                _controller.clear();
+                _query = '';
+              });
+            },
+          ),
+        ),
+        onChanged: (value) {
+          setState(() {
+            _query = value;
+          });
+        },
+      ),
     );
   }
 }

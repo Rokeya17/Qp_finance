@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:qp_finance/presentation/screens/wallet_overview.dart';
+import 'package:qp_finance/presentation/utility/color.dart';
+import 'package:qp_finance/presentation/utility/imageasset.dart';
 
 import '../utility/circular_iconbutton.dart';
 import 'auth/controllers/weather_controller.dart';
@@ -26,8 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 5,
+      initialIndex: 2,
       child: Scaffold(
         appBar: AppBar(
+
           actions: [
             CircularIconButton(
               icon: Icons.add,
@@ -44,23 +49,38 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {},
             ),
           ],
-          bottom: const TabBar(
+          bottom:  TabBar(
             tabs: [
-              Tab(
+              const Tab(
                 icon: Icon(Icons.home),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.video_collection_outlined),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.wallet),
               ),
-              Tab(
+              const Tab(
                 icon: Icon(Icons.notifications),
               ),
               Tab(
-                icon: CircleAvatar(),
+                icon: SizedBox(
+                  width: 25,
+                  height: 25,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: primaryColor, width: 2),
+                    ),
+                    child: const CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D',
+                      ),
+                    ),
+                  ),
+                ),
               ),
+
             ],
           ),
         ),
@@ -72,13 +92,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   sliver: SliverGrid(
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 8,
                     ),
                     delegate: SliverChildBuilderDelegate(
-                      (context, index) {
+                          (context, index) {
                         return null;
                       },
                       childCount: 6,
@@ -92,9 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
             const Center(child: Text('Notifications')),
             Center(
                 child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: MenuScreen(),
-            )),
+                  padding: const EdgeInsets.all(8.0),
+                  child: MenuScreen(),
+                )),
           ],
         ),
       ),

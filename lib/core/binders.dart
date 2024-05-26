@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:qp_finance/presentation/screens/auth/controllers/dashboard_controller.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/logout_controller.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/signin_controller.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/signup_controller.dart';
+import 'package:qp_finance/presentation/screens/auth/controllers/wallet_controller.dart';
 import 'package:qp_finance/presentation/screens/auth/controllers/weather_controller.dart';
 
 class StateBinders extends Bindings {
@@ -11,5 +13,7 @@ class StateBinders extends Bindings {
     Get.put(SignupController());
     Get.put(WeatherController());
     Get.put(LogoutController());
+    Get.put(WalletController());
+    Get.put(DashboardController());
   }
 }

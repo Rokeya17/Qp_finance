@@ -22,13 +22,13 @@ class SignInModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = this.status;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    data['status'] = status;
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
-    data['accessToken'] = this.accessToken;
-    data['refreshToken'] = this.refreshToken;
-    data['message'] = this.message;
+    data['accessToken'] = accessToken;
+    data['refreshToken'] = refreshToken;
+    data['message'] = message;
     return data;
   }
 }
@@ -165,50 +165,50 @@ class User {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    data['username'] = this.username;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
-    data['profile_pic'] = this.profilePic;
-    data['cover_pic'] = this.coverPic;
-    data['user_status'] = this.userStatus;
-    if (this.gender != null) {
-      data['gender'] = this.gender!.toJson();
+    data['_id'] = sId;
+    data['first_name'] = firstName;
+    data['last_name'] = lastName;
+    data['username'] = username;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['profile_pic'] = profilePic;
+    data['cover_pic'] = coverPic;
+    data['user_status'] = userStatus;
+    if (gender != null) {
+      data['gender'] = gender!.toJson();
     }
-    if (this.religion != null) {
-      data['religion'] = this.religion!.toJson();
+    if (religion != null) {
+      data['religion'] = religion!.toJson();
     }
-    data['date_of_birth'] = this.dateOfBirth;
-    data['user_bio'] = this.userBio;
-    data['language'] = this.language;
-    data['passport'] = this.passport;
-    data['last_login'] = this.lastLogin;
-    data['user_2fa_status'] = this.user2faStatus;
-    data['secondary_email'] = this.secondaryEmail;
-    data['recovery_email'] = this.recoveryEmail;
-    data['relation_status'] = this.relationStatus;
-    data['home_town'] = this.homeTown;
-    data['birth_place'] = this.birthPlace;
-    data['blood_group'] = this.bloodGroup;
-    data['reset_password_token'] = this.resetPasswordToken;
-    data['reset_password_token_expires'] = this.resetPasswordTokenExpires;
-    data['user_role'] = this.userRole;
-    data['status'] = this.status;
-    data['ip_address'] = this.ipAddress;
-    data['created_by'] = this.createdBy;
-    data['update_by'] = this.updateBy;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    data['__v'] = this.iV;
-    data['lock_profile'] = this.lockProfile;
-    data['email_list'] = this.emailList;
-    data['phone_list'] = this.phoneList;
-    data['user_about'] = this.userAbout;
-    data['user_nickname'] = this.userNickname;
-    data['present_town'] = this.presentTown;
-    data['fullName'] = this.fullName;
+    data['date_of_birth'] = dateOfBirth;
+    data['user_bio'] = userBio;
+    data['language'] = language;
+    data['passport'] = passport;
+    data['last_login'] = lastLogin;
+    data['user_2fa_status'] = user2faStatus;
+    data['secondary_email'] = secondaryEmail;
+    data['recovery_email'] = recoveryEmail;
+    data['relation_status'] = relationStatus;
+    data['home_town'] = homeTown;
+    data['birth_place'] = birthPlace;
+    data['blood_group'] = bloodGroup;
+    data['reset_password_token'] = resetPasswordToken;
+    data['reset_password_token_expires'] = resetPasswordTokenExpires;
+    data['user_role'] = userRole;
+    data['status'] = status;
+    data['ip_address'] = ipAddress;
+    data['created_by'] = createdBy;
+    data['update_by'] = updateBy;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    data['__v'] = iV;
+    data['lock_profile'] = lockProfile;
+    data['email_list'] = emailList;
+    data['phone_list'] = phoneList;
+    data['user_about'] = userAbout;
+    data['user_nickname'] = userNickname;
+    data['present_town'] = presentTown;
+    data['fullName'] = fullName;
     return data;
   }
 }
@@ -249,15 +249,15 @@ class Gender {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['gender_name'] = this.genderName;
-    data['data_status'] = this.dataStatus;
-    data['ip_address'] = this.ipAddress;
-    data['created_by'] = this.createdBy;
-    data['update_by'] = this.updateBy;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    data['__v'] = this.iV;
+    data['_id'] = sId;
+    data['gender_name'] = genderName;
+    data['data_status'] = dataStatus;
+    data['ip_address'] = ipAddress;
+    data['created_by'] = createdBy;
+    data['update_by'] = updateBy;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    data['__v'] = iV;
     return data;
   }
 }
@@ -298,15 +298,15 @@ class Religion {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['religion_name'] = this.religionName;
-    data['data_status'] = this.dataStatus;
-    data['ip_address'] = this.ipAddress;
-    data['created_by'] = this.createdBy;
-    data['update_by'] = this.updateBy;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    data['__v'] = this.iV;
+    data['_id'] = sId;
+    data['religion_name'] = religionName;
+    data['data_status'] = dataStatus;
+    data['ip_address'] = ipAddress;
+    data['created_by'] = createdBy;
+    data['update_by'] = updateBy;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    data['__v'] = iV;
     return data;
   }
 }

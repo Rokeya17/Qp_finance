@@ -1,34 +1,37 @@
 import 'package:get/get.dart';
-import 'package:qp_finance/model/weather_model.dart';
+import 'package:qp_finance/model/local/dashboard_model.dart';
 import 'package:qp_finance/presentation/screens/data/network_caller.dart';
 import 'package:qp_finance/presentation/screens/data/network_response.dart';
 
-class WeatherController extends GetxController {
+class DashboardController extends GetxController {
   bool _inProgress = false;
   String _message = '';
-  final String _url =
-      'https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=0dadc0ec41869d72cab605ebf70d5c96';
+  DashboardModel _dashboardModel = DashboardModel();
+  String _url =
+      'https://quantumpossibilities.eu:82/api/wallet/getting-wallet-summary';
 
   bool get inprogress => _inProgress;
 
   String get message => _message;
-  WeatherModel _weatherModel = WeatherModel();
 
-  WeatherModel get weatherModel => _weatherModel;
+  DashboardModel get dashboardModel => _dashboardModel;
 
-  Future<bool> getWeather() async {
+  Future<bool> getDahBoardData() async {
     _inProgress = true;
     update();
+
     final NetworkResponse response = await NetworkCaller().getRequest(_url);
+
     _inProgress = false;
     update();
 
-    if (response.isSuccess) {
-      _weatherModel = WeatherModel.fromJson(response.responseJson!);
+    if (response.responseJson!['status'] == 200) {
+      _dashboardModel = DashboardModel.fromJson(response.responseJson!);
+      _message = 'Success';
       update();
       return true;
     } else {
-      _message = 'An error occurred';
+      _message = 'Failed';
       update();
       return false;
     }

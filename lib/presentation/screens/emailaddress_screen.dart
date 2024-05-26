@@ -23,14 +23,17 @@ class EmailaddressScreen extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
 
-  String? ValidateEmail(String? email) {
-    RegExp emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+  String? validateEmail(String? email) {
+    RegExp emailRegex = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@gmail.com$',
+    );
     final isEmailValid = emailRegex.hasMatch(email ?? '');
     if (!isEmailValid) {
-      return 'Please enter a valid email';
+      return 'Please enter a valid Gmail address';
     }
     return null;
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,15 +86,18 @@ class EmailaddressScreen extends StatelessWidget {
                     ),
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.clear),
-                      onPressed: () {},
+                      onPressed: () {
+                        _emailController.clear();
+                      },
                     ),
                   ),
-                  validator: ValidateEmail,
+                  validator: validateEmail,
                 ),
                 const Gap(65),
                 ButtonWidget(
                     buttonText: 'Next',
-                    onPressed: () {
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
                       Get.to(PhoneNumberScreen(
                         email: _emailController.text.trim(),
                         firstName: firstName,
@@ -101,8 +107,10 @@ class EmailaddressScreen extends StatelessWidget {
                         month: month,
                         year: year,
                       ));
-                    })
-              ],
+                    }
+                  }
+
+                ),],
             ),
           ),
         ),
