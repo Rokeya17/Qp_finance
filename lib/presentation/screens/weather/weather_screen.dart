@@ -80,7 +80,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Manage Cities',
+                              'Manage Cities.',
                               style: TextStyle(
                                   fontSize: 36,
                                   fontWeight: FontWeight.w700,
