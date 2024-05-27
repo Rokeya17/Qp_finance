@@ -42,7 +42,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     child: Row(
                       children: [
                         IconButton(
@@ -70,57 +71,60 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 const SizedBox(height: 20),
                 _showSearchList
                     ? Expanded(
-                  child: StandardSearchBar(
-                    searchValue: _searchController.text,
-                    suggestions: _searchResults, width: 360,
-                  ),
-                )
+                        child: StandardSearchBar(
+                          searchValue: _searchController.text,
+                          suggestions: _searchResults,
+                          width: 360,
+                        ),
+                      )
                     : Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:  [
-                        Text(
-                          'Manage Cities',
-                          style: TextStyle(
-                              fontSize: 36,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white),
-                        ),
-                        IconButton(
-                          onPressed:(){} ,
-                          icon: Icon(Icons.list),
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    buildWeatherInfoContainer(
-                      date: 'Today, 12 September',
-                      location: 'Dhaka',
-                      aqi: 'AQI 29',
-                      temperature: controller.weatherModel.main?.tempMax.toString() ?? 'maxtemp',
-                    ),
-                    buildWeatherInfoContainer(
-                      date: 'Today, 12 September',
-                      location: 'Dhaka',
-                      aqi: 'AQI 29',
-                      temperature: '32° / 21°',
-                    ),
-                    buildWeatherInfoContainer(
-                      date: 'Today, 12 September',
-                      location: 'Dhaka',
-                      aqi: 'AQI 29',
-                      temperature: '32° / 21°',
-                    ),
-                    buildWeatherInfoContainer(
-                      date: 'Today, 12 September',
-                      location: 'Dhaka',
-                      aqi: 'AQI 29',
-                      temperature: '32° / 21°',
-                    ),
-                  ],
-                ),
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Manage Cities',
+                                style: TextStyle(
+                                    fontSize: 36,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.list),
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          buildWeatherInfoContainer(
+                            date: 'Today, 12 September',
+                            location: 'Dhaka',
+                            aqi: 'AQI 29',
+                            temperature: controller.weatherModel.main?.tempMax
+                                    .toString() ??
+                                'maxtemp',
+                          ),
+                          buildWeatherInfoContainer(
+                            date: 'Today, 12 September',
+                            location: 'Dhaka',
+                            aqi: 'AQI 29',
+                            temperature: '32° / 21°',
+                          ),
+                          buildWeatherInfoContainer(
+                            date: 'Today, 12 September',
+                            location: 'Dhaka',
+                            aqi: 'AQI 29',
+                            temperature: '32° / 21°',
+                          ),
+                          buildWeatherInfoContainer(
+                            date: 'Today, 12 September',
+                            location: 'Dhaka',
+                            aqi: 'AQI 29',
+                            temperature: '32° / 21°',
+                          ),
+                        ],
+                      ),
               ],
             ),
           ),
@@ -206,12 +210,18 @@ class _WeatherScreenState extends State<WeatherScreen> {
               const SizedBox(width: 5),
               Text(
                 location,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.white),
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white),
               ),
               const SizedBox(width: 10),
               Text(
                 aqi + ' ' + temperature,
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white), // Set text color to white
+                style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white), // Set text color to white
               ),
             ],
           ),
@@ -222,13 +232,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   void _performSearch(String query) {
     setState(() {
-     
       _searchResults = [
         'dhaka',
         'mirpur',
-
       ];
     });
   }
-
 }
