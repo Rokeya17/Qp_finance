@@ -14,27 +14,3 @@ A new Flutter project.
 ![img_16.png](img_16.png)
 ![img_17.png](img_17.png)
 
-# Project Title
-
-![Frame Image 1](link_to_img_1)
-![Frame Image 2](link_to_img_2)
-![Frame Image 3](link_to_img_3)
-
-## Introduction
-A brief description of your project.
-
-## Features
-- Feature 1
-- Feature 2
-- Feature 3
-
-## Installation
-Instructions on how to install the project.
-
-## Usage
-How to use the project.
-
-## Contributing
-Guidelines for contributing to the project.
-
-![Frame Image 4](link_to_img_4)
